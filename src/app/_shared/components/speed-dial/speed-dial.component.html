@@ -1,0 +1,8 @@
+<div class="button-conteiner" (click)="onOpen()" >
+    <ng-content select=".button"></ng-content>
+    <div class="sinal" [hidden]="!isActive"></div>
+</div>
+
+<div  #dial [@flyInOut]="state" class="bubble align-center" [ngClass]="{'left' : direction == 'rtl'}"  >
+    <ng-content select=".container-box"></ng-content>
+</div>

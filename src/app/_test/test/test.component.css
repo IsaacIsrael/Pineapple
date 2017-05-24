@@ -1,0 +1,23 @@
+section{
+  background-color: white;
+  padding: 0px;
+}
+
+section > header{
+  margin: 10px 0px;
+  padding: 20px;
+}
+section > header h1 { 
+    color: #ff764f; 
+    font-size: 48px; 
+    font-family: 'Lato', sans-serif;
+    padding-bottom: 10px; 
+    text-align:  center;
+    padding: 0px;
+}
+
+section >>> article{
+   border-top: 2px solid rgb(204, 204, 204);
+   margin: 10px 0px;
+   padding: 20px;
+}

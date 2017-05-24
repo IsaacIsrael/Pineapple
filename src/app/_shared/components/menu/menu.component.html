@@ -1,0 +1,8 @@
+<a (click)="toggleMenu()" ><i class="material-icons collapse-icon">dehaze</i></a>
+
+<div class="side-nav" [@slide]="menuState" [style.background]="color">
+  <ng-content select=".menu"></ng-content>
+</div>
+<div class="background"  [ngClass]="{'background-out': menuState=='out','background-in': menuState=='in'}" (click)="toggleMenu()"></div>
+
+

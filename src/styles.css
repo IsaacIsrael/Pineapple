@@ -1,0 +1,412 @@
+@charset "UTF-8"; 
+
+html body{
+	margin:0px;
+	padding: 0px;
+	border: 0px;
+}
+body{
+   background-color: #d9d9d9;
+   background-image: url('./images/logo-gray.png');
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-position: center; 
+}
+section{
+    height:  calc(100vh - 30px);
+	width: 100%;
+    padding: 10px 0px;
+    overflow-y: auto;
+}
+
+.box{
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 15px;
+    box-shadow: 2px 2px 20px rgba(0,0,0,.5);
+    margin:0px;
+    padding:10px;
+}
+.view-container{
+    height: 100vh;
+    position: absolute;
+    width: calc(100% - 30px);
+    
+}
+
+.align-center {
+  /* habilita o flex nos filhos diretos */
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+
+	/* centraliza na vertical */
+	-ms-align-items: center;
+	-webkit-align-items: center;
+	align-items: center;
+
+	/* centraliza na horizontal */
+	-ms-justify-content: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+}
+
+/********************************** App ScrollBar **********************************/
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: rgba(0,0,0,0.35);
+}
+
+section::-webkit-scrollbar-track {
+    margin: 10px 0px;
+}
+
+/********************************** Loader **********************************/
+
+.cssload-loader{
+	position: absolute;
+	width: 71px;
+	height: 71px;
+	left: 46%;
+	left: calc(50% - 35px);
+		left: -o-calc(50% - 35px);
+		left: -ms-calc(50% - 35px);
+		left: -webkit-calc(50% - 35px);
+		left: -moz-calc(50% - 35px);
+	
+	border-radius: 71px;
+	background-color: rgba(2,151,110,0.8);
+	transform-origin:	50% 50%;
+		-o-transform-origin:	50% 50%;
+		-ms-transform-origin:	50% 50%;
+		-webkit-transform-origin:	50% 50%;
+		-moz-transform-origin:	50% 50%;
+	animation: cssload-loader 4s ease-in-out infinite;
+		-o-animation: cssload-loader 4s ease-in-out infinite;
+		-ms-animation: cssload-loader 4s ease-in-out infinite;
+		-webkit-animation: cssload-loader 4s ease-in-out infinite;
+		-moz-animation: cssload-loader 4s ease-in-out infinite;
+}
+.cssload-loader:before{
+	content: "";
+	position: absolute;
+	background-color: rgba(2,151,110,0.8);
+	top: 0px;
+	left: -147px;
+	height: 71px;
+	width: 71px;
+	border-radius: 71px;
+}
+.cssload-loader:after{
+	content: "";
+	position: absolute;
+	background-color: rgba(2,151,110,0.8);
+	top: 0px;
+	left: 147px;
+	height: 71px;
+	width: 71px;
+	border-radius: 71px;
+}
+/***** Animation Loader*****/
+@keyframes cssload-loader{
+		0%{transform:rotate(0deg);}
+		50%{transform:rotate(180deg);}
+		100%{transform:rotate(180deg);}
+}
+@-o-keyframes cssload-loader{
+		0%{-o-transform:rotate(0deg);}
+		50%{-o-transform:rotate(180deg);}
+		100%{-o-transform:rotate(180deg);}
+}
+@-ms-keyframes cssload-loader{
+		0%{-ms-transform:rotate(0deg);}
+		50%{-ms-transform:rotate(180deg);}
+		100%{-ms-transform:rotate(180deg);}
+}
+@-webkit-keyframes cssload-loader{
+		0%{-webkit-transform:rotate(0deg);}
+		50%{-webkit-transform:rotate(180deg);}
+		100%{-webkit-transform:rotate(180deg);}
+}
+@-moz-keyframes cssload-loader{
+		0%{-moz-transform:rotate(0deg);}
+		50%{-moz-transform:rotate(180deg);}
+		100%{-moz-transform:rotate(180deg);}
+}
+
+/********************************** Buttons **********************************/
+
+/*****Sub Menu Buttons*****/
+.sub-menu{
+    background-color: transparent;
+    border: 2px solid #999999;
+    color: #999999;
+    fill: #999999;
+    padding: 0px;
+    line-height: 0px;
+   
+    position: relative;
+    overflow: hidden;
+    transition-duration: 0.4s;
+}
+.sub-menu:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+.sub-menu:hover {
+    fill: #333;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.sub-menu.is-actived,
+.sub-menu:focus {
+    background-color: #4CAF50;
+    color: #FFFFFF;
+    fill: #FFFFFF;
+    border: 2px solid transparent;
+}
+.sub-menu:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+.sub-menu > i{
+    font-size: 35px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.sub-menu > svg{
+    height: 34.5px;
+    width: 36px;
+    padding: 2px;
+}
+
+/********************************** Tool Tips **********************************/
+
+.tooltip-conatiner {
+    position: relative;
+    display: inline-block;
+}
+.tooltip-conatiner > .tooltiptext {
+
+    visibility: hidden;
+    opacity: 0;
+
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    position: absolute;
+    z-index: 999;
+
+    transition: opacity 1s ease-in-out;
+}
+.tooltip-conatiner > .tooltiptext::after {
+    content: " ";
+    position: absolute;
+   
+    border-width: 5px;
+    border-style: solid;
+    
+}
+.tooltip-conatiner:hover  >.tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+.tooltip-conatiner > .tooltiptext.right {
+    top: -5px;
+    left: 115%; 
+}
+.tooltip-conatiner > .tooltiptext.right::after {
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-color: transparent #555 transparent transparent;
+}
+.tooltip-conatiner > .tooltiptext.left {
+    top: -5px;
+    right: 115%; 
+}
+.tooltip-conatiner > .tooltiptext.left::after {
+    top: 50%;
+    left: 100%; 
+    margin-top: -5px;
+     border-color: transparent transparent transparent #555;
+}
+.tooltip-conatiner > .tooltiptext.top {
+    width: 120px;
+    bottom: 115%;
+    left: 50%; 
+    margin-left: -60px; 
+}
+.tooltip-conatiner > .tooltiptext.top::after {
+    top: 100%; 
+    left: 50%;
+    margin-left: -5px;
+    border-color: #555 transparent transparent transparent;
+} 
+.tooltip-conatiner > .tooltiptext.botton {
+    width: 120px;
+    top: 115%;
+    left: 50%; 
+    margin-left: -60px; 
+} 
+.tooltip-conatiner > .tooltiptext.botton::after {
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-color: transparent transparent #555 transparent;
+}
+
+/********************************** Item Panel **********************************/
+
+item-panel.search-results > .header > .default-buttons > .tooltip-conatiner >button.sub-menu.is-actived,
+item-panel.search-results > .header > .default-buttons > .tooltip-conatiner >button.sub-menu:focus{
+	 background-color: #4CAF50;
+}
+
+/*item-panel.search-results > .header > .default-buttons > .tooltip-conatiner > span.tooltiptext{
+	 background-color: #4CAF50;
+}
+
+item-panel.search-results > .header > .default-buttons > .tooltip-conatiner > span.tooltiptext:after{
+	  border-color: transparent transparent #4CAF50 transparent;
+}*/
+
+item-panel.search-results > .item-panel > .total-container > .total{
+	   background: rgba(2,151,110,0.5);
+       font-size: .9em; 
+       color: rgba(255, 255, 255, 1);
+       font-family: 'Lato', sans-serif;
+}
+item-panel.search-results thead > tr > th{
+    background: rgba(2,151,110,0.8);
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    border: none;
+    font-weight: bolder;
+    font-size: 1.2em;
+    padding: 15px 0;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+item-panel.search-results thead:after {
+    content: "-";
+    display: block;
+    line-height: 1em;
+    color: transparent;
+    opacity: 0;
+    visibility: collapse;
+}
+item-panel.search-results > .item-panel > table > tbody > tr:nth-child(odd){
+    background: rgba(2,151,110,0.1);
+}
+item-panel.search-results > .item-panel > table > tbody > tr:nth-child(even){
+    background: rgba(2,151,110,0);
+}
+item-panel.search-results > .item-panel > table > tbody > tr.is-active,
+item-panel.search-results > .item-panel > table > tbody > tr:hover{
+    background: rgba(2,151,110,0.4);
+}
+
+/********************************** Tooglet Panel  **********************************/
+
+togglet-panel.seacrh-box >.panel{
+    border: none; 
+    box-shadow: none;
+    display: block;
+    position: relative;
+    background: transparent;
+    margin-bottom: 5px;
+}
+togglet-panel.seacrh-box >.panel > .panel-heading{
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 100;
+    font-style: italic;
+}
+togglet-panel.seacrh-box > .panel > .panel-heading > .buttons > button.btn.btn-default.icon:hover{
+    background-color: #4CAF50;
+}
+togglet-panel.seacrh-box >.panel > .body-container {
+    position:absolute;
+    top: 0;
+    z-index:10;
+    width: 100wh;
+    border-radius: 10px; 
+    box-shadow: rgba(0, 0, 0, 0.137255) 0px 2px 2px 0px, rgba(0, 0, 0, 0.117647) 0px 1px 5px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px;
+}
+togglet-panel.seacrh-box >.panel > .body-container >.panel-body{
+    background-color:rgba(2,151,110,0.9);
+    border: none; 
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/********************************** Auto Complite  **********************************/
+
+auto-complete.search > .input-container{
+    border-radius:80px;
+    padding: 0px 10px; 
+}
+
+auto-complete.search > .input-container > .input-group > .values > ul.selectedOptions > li > span.badge{
+    background:  rgba(2,151,110,0.4)!important;
+    margin: 3px 0px !important;
+    margin-left:5px !important; 
+}
+
+auto-complete.search >  .input-container > .input-group > .values > ul.selectedOptions > li > span.badge > .btn{
+    border-left: 1px solid rgba(255,255,255,0.8) !important;
+}
+
+auto-complete.search >  .options-container {
+    margin: 0px 15px !important;
+}
+
+/********************************** Auto Complite  **********************************/
+
+select-option.search > .input-container{
+    background: transparent ;
+    border: none;
+    box-shadow: none !important;
+}
+select-option.search > .input-container > .input-group >.value{
+    color: #fff !important;
+}
+select-option.search > .input-container > .input-group > .input-group-addon >  button.btn i{
+    color: #fff !important;
+}
+select-option.search > .options-container > .options {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+}
+label.search-select-option{
+    color: #fff;
+    float:  left;
+    margin: 0px;
+    line-height: 35px;
+    font-weight: normal;
+}

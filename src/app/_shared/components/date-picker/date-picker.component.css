@@ -1,0 +1,217 @@
+:host{
+  position: relative;
+  font-family:"Open Sans", sans-serif;
+  font-size:12px;
+}
+
+/********************** Inpunt **********************/
+
+.input-section {
+  display: inline-flex;
+  outline: none;
+  color: white;
+}
+.input-section span{
+    line-height: 35px;
+    padding: 0px 10px;
+    cursor: default;
+    font-weight:bolder; 
+}
+.input-section input{
+  width: 111px;
+  background: transparent;
+  border: 0;
+  color: white;
+  padding-left: 0px;
+  padding-right: 0px;
+  text-align: center;
+}
+.input-section input::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+.input-section input::-webkit-inner-spin-button{
+   display: none;
+    -webkit-appearance: none;
+}
+.input-section input.is-active{
+    border: 1.25px solid #66afe9;
+    background:  rgb(255, 255, 255);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+     color:rgb(85, 85, 85);
+}
+
+/********************** Calendar **********************/
+
+/*******************Buble Container Calendar*******************/
+
+ .calendar {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 500px;
+  border: 1px solid #646464;
+  border-radius: 7px;
+  background: #FFFFFF;
+  position: absolute;
+  top: 47px;
+  right: -150px;
+  z-index: 100;
+  display: flex;
+ 
+}
+.calendar:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 30px;
+  height: 30px;
+  top: -16px;
+  left: 140px;
+  transform: rotate(45deg);
+  border-top: 1px solid #646464;
+  border-left: 1px solid #646464;
+  background: #FFFFFF;
+  transition: left 0.5s;
+}
+.calendar.is-to:after {
+  left: 280px;
+}
+
+/*******************Main  Container*******************/
+
+.calendar .calendar-container {
+  width: 340px;
+  height: 100%;
+  padding: 20px;
+  border-right: 1px solid #D4DADE;
+}
+
+/********* Calendar  Control*********/
+
+.calendar .calendar-container .controls {
+  width: 100%;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.calendar .calendar-container .controls .control-icon {
+  display: block;
+  width: 12px;
+  height: 20px;
+  cursor: pointer;
+  color: #8d8d8d
+}
+.calendar .calendar-container .controls .control-title {
+  font-size: 17px;
+  color: #2c2e2f;
+}
+
+/********* Calendar Name Day of Week*********/
+
+ .calendar .calendar-container .day-names {
+  display: inline-block;
+  width: 300px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.calendar .calendar-container .day-names .day-name {
+  width: calc(300px / 7);
+  font-size: 13px;
+  color: #9CA3A6;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+}
+
+/********* Calendar Days*********/
+
+.calendar .calendar-container .days {
+  display: inline-block;
+  width: 300px;
+}
+.calendar .calendar-container .days .day {
+  width: calc(300px / 7);
+  font-size: 13px;
+  color: #9CA3A6;
+  display: block;
+  float: left;
+  text-align: center;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.calendar .calendar-container .days .day.is-within-range {
+  background: #c0c0c0;
+  color: #333333;
+}
+.calendar .calendar-container .days .day.is-start{
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+.calendar .calendar-container .days .day.is-end {
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+.calendar .calendar-container .days .day.disable{
+   color: #d1d5d6;
+}
+.calendar .calendar-container .days .day .day-num {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  width: calc(300px / 7);
+  height: 100%;
+  border-radius: 50%;
+  padding: 10px 15px;
+}
+.calendar .calendar-container .days .day .day-num:hover, 
+.calendar .calendar-container .days .day .day-num.is-active {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+/********* Side-Container  *********/
+
+ .calendar .side-container {
+  width: 158px;
+  min-height: 390px;
+  padding: 10px;
+  display: inline-flex;
+  align-items: center;
+}
+ .calendar .side-container .side-container-buttons {
+  width: 138px;
+}
+ .calendar .side-container .side-container-buttons .side-button {
+  background: #FFFFFF;
+  border-radius: 15px;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 138px;
+  display: block;
+  text-align: center;
+  outline: none;
+  margin-bottom: 15px;
+  color: #6B737C;
+  font-size: 13px;
+  cursor: pointer;
+}
+.calendar .side-container .side-container-buttons .side-button:hover, 
+.calendar .side-container .side-container-buttons .side-button.is-active {
+  background: #000000;
+  color: #FFFFFF;
+}
+.calendar .side-container .side-container-buttons .side-button.danger{
+  border-color: #d43f3a;
+}
+.calendar .side-container .side-container-buttons .side-button:hover.danger{
+  background-color: #d9534f;
+  color: #FFFFFF;
+}

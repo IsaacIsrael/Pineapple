@@ -1,0 +1,15 @@
+/********************************** Item Panel **********************************/
+
+item-panel tr {
+    cursor: pointer;
+}
+item-panel tr > td.center{
+    text-align: center;
+}
+item-panel tr > td > ul{
+   padding:  0px;
+   margin:  0px;
+}
+item-panel tr > td > ul > li{
+    list-style-type: none;
+} 

@@ -1,0 +1,56 @@
+<article>
+  <div class="form-group">
+    <p>Meu layout - Supplier View</p>
+  </div>
+  <togglet-panel class="seacrh-box" [isOpenOnlyFocus]="true">
+    <div   class="panel-title">
+      Você buscou por: Shashing County TextTile , com data ded criação : 11/01/17  , do Masculino , coletado por Isaac Israel 
+    </div>
+    <div class="panel-body">  
+      <div class="form-group">
+        <auto-complete  [(value)]="supplierSearch"  class="search"  [multiSelect]="SupplierFildSetting.MultiSelect" [placeholder]="SupplierFildSetting.Placeholder" 
+                        [optionField]="SupplierFildSetting.FieldOption" [options]="SupplierFildSetting.ListOption"
+                        (keyword)="onSupplierKeywordEventHandler($event)"> 
+        </auto-complete>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" *ngIf="SegmentFildSetting.Visibile" >
+            <label  class="search-select-option" for="segment-search">Segmento : </label>
+            <select-option  id="segment-search" [(value)]="SegmentSearch"  class="search" [placeholder]="SegmentFildSetting.Placeholder"
+                            [optionField]="SegmentFildSetting.FieldOption"   [options]="SegmentFildSetting.ListOption"></select-option>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <label  class="search-select-option" for="user-search">Úsuarios : </label>
+            <select-option id="user-search"  [(value)]="UserSearch" class="search"  [placeholder]="UserFildSetting.Placeholder"  
+                          [optionField]="UserFildSetting.FieldOption" [options]="UserFildSetting.ListOption"></select-option>
+          </div>
+        </div>
+      </div>
+    </div>
+  </togglet-panel>
+</article>
+
+<!--<form class="collapse-box" role="form">
+      <div class="row">
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                  <div class="form-group">
+                        <date-picker  [(value)]="datePicker" untilToday=true placeholder="Data de Criação do Contatos:"></date-picker>
+                  </div>  
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="position: static !important">
+                  <speed-dial isActive="false">
+                        <span class="button">Filter</span>
+                        <div class="container-box">
+                              Teste Isaac Teste Isaac Teste Isaac Teste Isaac
+                              Isaac Teste Isaac  Isaac Teste Isaac  Isaac Teste Isaac
+                        </div>
+                  </speed-dial>
+            </div>
+      </div>
+            <div class="form-group">
+            <button class="btn btn-primary footer">
+                  <i class="material-icons">search</i>
+            </button>
+      </div>
+</form> -->

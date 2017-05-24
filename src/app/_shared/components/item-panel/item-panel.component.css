@@ -1,0 +1,186 @@
+/********************************** Header **********************************/
+
+.header{
+    display: table;
+    padding: 0px 16px;
+}
+.header > .buttons{
+   display: table-cell;
+    vertical-align: bottom;
+    width: 100%;
+}
+.header > .default-buttons{
+    display: flex;
+}
+.header > .default-buttons > :first-child{
+    margin-right: 5px;
+}
+.header > .default-buttons button {
+    background-color: transparent;
+    border: 2px solid #999999;
+    color: #999999;
+    padding: 0px;
+    line-height: 0px;
+   
+    position: relative;
+    overflow: hidden;
+    transition-duration: 0.4s;
+}
+.header > .default-buttons button:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+.header > .default-buttons button:hover {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.header > .default-buttons button.is-actived,
+.header > .default-buttons button:focus {
+    background-color:#337ab7;
+    color: #FFFFFF;
+    border: 2PX solid transparent;
+}
+.header > .default-buttons button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+.header > .default-buttons button > i{
+    font-size: 35px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/********************************** Tool Tips **********************************/
+
+.tooltip-conatiner {
+    position: relative;
+    display: inline-block;
+}
+.tooltip-conatiner > .tooltiptext {
+
+    visibility: hidden;
+    opacity: 0;
+
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    position: absolute;
+    z-index: 999;
+
+    transition: opacity 1s ease-in-out;
+
+    /**Botton***/
+
+    width: 120px;
+    top: 115%;
+    left: 50%; 
+    margin-left: -60px; 
+}
+.tooltip-conatiner:hover > .tooltiptext {
+   
+    visibility: visible;
+    opacity: 1;
+}
+.tooltip-conatiner > .tooltiptext::after {
+    content: " ";
+    position: absolute;
+   
+    border-width: 5px;
+    border-style: solid;
+
+    /**Botton***/
+
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-color: transparent transparent #555 transparent;
+    
+}
+
+/********************************** Item Panel **********************************/
+
+.item-panel{
+    display: grid;
+     width:100%;
+}
+/**************** Total ****************/
+.total-container{
+    width: 100%;
+    display: inline-flex;
+}
+.total-container > .total{
+    background-color: #a6a6a6;
+    width: 100%;
+    padding: 5px 10px;
+    margin: 10px 0px;
+    border-radius: 8px; 
+    color: #fff;
+    font-weight: bolder;
+}
+/**************** List View ****************/
+table{
+    margin-bottom: 0px;
+}
+table > tbody{ 
+	display: block;
+    overflow-y: auto;
+}
+table /deep/ thead, 
+table /deep/ tbody > tr{
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+/**************** Grid View ****************/
+.gridview-container{
+    display: block;
+    overflow-y: auto;
+    width: 100%; 
+}
+
+/********************************** Empty List **********************************/
+
+.empty-list-container{
+    width: 100%;
+    font-family:'"Trebuchet MS", Helvetica, sans-serif'; 
+    font-size: 3em;
+    font-style: italic;
+    font-weight: bolder;
+    color: rgb(104, 104, 104);
+    text-shadow: -1px 5px 8px rgba(104, 104, 104, 0.76);
+    text-align: center;
+
+    /* habilita o flex nos filhos diretos */
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+
+	/* centraliza na vertical */
+	-ms-align-items: center;
+	-webkit-align-items: center;
+	align-items: center;
+
+	/* centraliza na horizontal */
+	-ms-justify-content: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+}

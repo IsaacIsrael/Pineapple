@@ -1,0 +1,37 @@
+<div class="header">
+    <div class="buttons">
+        <ng-content select="[buttons]"></ng-content>
+    </div>  
+    <div class="default-buttons" *ngIf="!!listviewComponent && !!gridviewComponent" >
+        <div class="tooltip-conatiner">
+            <button type="button" class="btn btn-default sub-menu" [class.is-actived]="view == 'grid'" (click)="onClickEventHandler($event,'grid')" >
+                <i class="material-icons">view_module</i>
+            </button>
+            <span class="tooltiptext">Grid View</span>
+        </div>
+        <div class="tooltip-conatiner">  
+            <button type="button" class="btn btn-default sub-menu" [class.is-actived]="view == 'list'" (click)="onClickEventHandler($event,'list')">
+                <i class="material-icons">view_list</i>
+            </button>
+            <span class="tooltiptext">List View</span>
+        </div>
+    </div>
+</div>
+
+<div class="item-panel" *ngIf="collections.length > 0">
+    <div class="total-container">
+        <span class="total">{{totalDescription}}</span>
+    </div>
+    <div   #gridview class="gridview-container" *ngIf="view == 'grid'"  infinite-scroll [scrollWindow]="false" [infiniteScrollDistance]="infiniteScrollDownDistance"  [infiniteScrollUpDistance]="infiniteScrollUpDistance" [infiniteScrollThrottle]="infiniteScrollThrottle" (scrolled)="onScrollDownEventHandler($event)" (scrolledUp)="onScrollUpEventHandler($event)">
+        <template ngFor [ngForOf]="list" [ngForTemplate]="gridviewComponent?.itemTemplate"></template>
+    </div>      
+    <table class="table listview-container" *ngIf="view == 'list'" >
+        <ng-content select="[list-view-header]"></ng-content>
+        <tbody #listview infinite-scroll [scrollWindow]="false" [infiniteScrollDistance]="infiniteScrollDownDistance"  [infiniteScrollUpDistance]="infiniteScrollUpDistance" [infiniteScrollThrottle]="infiniteScrollThrottle" (scrolled)="onScrollDownEventHandler($event)" (scrolledUp)="onScrollUpEventHandler($event)">
+            <template ngFor [ngForOf]="list" [ngForTemplate]="listviewComponent?.itemTemplate"></template>      
+        </tbody>
+    </table>
+</div>
+<div class="empty-list-container" *ngIf="collections.length == 0" [style.height]="emptyViewHeight">
+    <span>{{emptyListDescriptionDescription}}</span>
+</div>

@@ -1,0 +1,39 @@
+ <div class="input-container" [ngClass]="{'focus': isFocus , 'disabled': disabled }" (click)="input.focus()">
+      <div class="input-group">
+            <div class="values">
+                  
+                  <ul class="list-group list-inline selectedOptions" *ngIf="multiSelect" >
+                        <li class="list-group-item" *ngFor="let item of value" >
+                              <span class="badge">
+                                    {{transformOption(item)}}
+                                    <button type="button" class="btn btn-default btn-xs" (click)="onRemoveEventHandler($event,item)">
+                                          <i class="material-icons">clear</i>
+                                    </button>
+                              </span>
+                        </li>
+                  </ul>
+                  <input #input auto-size [disableAutoSize]="!multiSelect" parentSize [disableParentSize]="!multiSelect"
+                               class="form-control" [placeholder]="placeholder" [value]="keyword" [disabled]="disabled" 
+                              (focus)="onFocusEventHandler($event,true)" (blur)="onFocusEventHandler($event,false);"  
+                              (keyup)="onKeyUpEventHandler($event)" (keyup.enter)="onFocusEventHandler($event,false)"
+                              (keydown.backspace)="onKeyDownBackspaceEventHandler($event)">
+            </div>
+            <div class="input-group-addon" >
+                  <button type="button" class="btn btn-default" [class.hiden]="!isFocus" (click)="onClearEventHandler($event)">
+                        <i class="material-icons">clear</i>
+                  </button>
+                  <button type="button" class="btn btn-default" *ngIf="IsSelectOptions">
+                        <i class="material-icons">arrow_drop_down</i>
+                  </button>
+            </div>
+      </div>
+ </div>
+
+<div class="options-container" [hidden]="IsHideOptions">
+      <ul class="list-group options">
+            <li class="list-group-item"  [class.selected]="isSelected(item)" (mousedown)="onSelectOptionEventHandler($event,item)" 
+                  *ngFor="let item of list ">{{transformOption(item)}}</li>
+      </ul>
+</div>
+
+

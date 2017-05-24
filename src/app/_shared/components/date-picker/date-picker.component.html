@@ -1,0 +1,34 @@
+<div class="input-section" >
+  <span>{{placeholder}}</span>
+  <input type="date" required class="form-control" [class.is-active]="range == 'from'" (click)="onToggleCalendar($event, 'from')"  [value]="Start" (input)="onInput($event)">
+  <span>|</span>
+  <input type="date" required class="form-control" [class.is-active]="range == 'to'" (click)="onToggleCalendar($event, 'to')" [value]="End" (input)="onInput($event)">
+</div>
+
+<div class="calendar"  [@flyInOut]="state" [ngClass]="{  'is-to': range === 'to' }">
+    <div class="calendar-container">
+      <div class="controls">
+        <i class="material-icons control-icon" (click)="onPrevMonth($event)">keyboard_arrow_left</i>
+        <span class="control-title">{{ date | date:'MMMM y' }}</span>
+        <i class="material-icons control-icon" (click)="onNextMonth($event)">keyboard_arrow_right</i>
+      </div>
+      <div class="day-names">
+        <span class="day-name" *ngFor="let name of ['Dom','Seg', 'Ter', 'Quar', 'Qui', 'Sex', 'Sab']">{{ name }}</span>
+      </div>
+      <div class="days">
+        <div class="day" *ngFor="let day of days; let i = index;"  (click)="onSelectDate($event, day)" 
+            [ngClass]="{ 'is-within-range': isOnRange(day),'is-start': isStart(day),'is-end': isEnd(day), 'disable' : isDisable(day)}">
+          <span  *ngIf="isOnMonth(day)" class="day-num" [class.is-active]="isStart(day) || isEnd(day)">{{ day |date:'dd'}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="side-container">
+       <div class="side-container-buttons">
+        <button type="button" class="side-button" (click)="onSelectWeek($event,0)" [class.is-active]="selectedRange == '0'">Última Semana</button>
+        <button type="button" class="side-button" (click)="onSelectWeek($event,1)" [class.is-active]="selectedRange == '1'">2 Semanas atrás</button>
+        <button type="button" class="side-button" (click)="onSelectWeek($event,2)" [class.is-active]="selectedRange == '2'">3 Semanas atrás</button>
+        <button type="button" class="side-button" (click)="onSelectWeek($event,3)" [class.is-active]="selectedRange == '3'">4 Semanas atrás</button>
+        <button type="button" class="side-button danger" (click)="onClearRange($event)" >Limpar</button>
+      </div>
+     </div>
+  </div>

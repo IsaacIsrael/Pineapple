@@ -1,0 +1,62 @@
+
+.panel > .panel-heading{
+    display: table;
+    
+}
+.panel > .panel-heading >>> .panel-title{
+    display: table-cell;
+    vertical-align: top;
+    width: 100%;
+}
+.panel > .panel-heading > .buttons {
+    display: flex;
+}
+.panel > .panel-heading > .buttons > button {
+    padding: 0px 1px;
+    background-color: transparent;
+    border: 1px solid #999999;
+    border-radius: 100%;
+    color: #999999;
+    line-height: 0px;
+    outline: none;
+   
+    position: relative;
+    overflow: hidden;
+    transition-duration: 0.4s;
+}
+.panel > .panel-heading > .buttons > button.in {
+     transform: rotate(180deg);
+}
+.panel > .panel-heading > .buttons > button:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    border-radius: 100%;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -40px !important;
+    margin-top: -140%;
+    opacity: 0;
+    transition: all 0.8s
+}
+.panel > .panel-heading > .buttons > button:hover {
+    background-color:#337ab7;
+    color: #FFFFFF;
+    border: 1px solid transparent;
+}
+.panel > .panel-heading > .buttons > button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+.panel > .panel-heading > .buttons > button > i{
+    padding-top: 3px; 
+    /*transition: all 1s ease-out;*/
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
