@@ -1,11 +1,11 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { ScrollPositionDirective } from './scroll-position.directive';
+import { HidenItensDirective } from './hiden-itens.directive';
 
-describe('ScrollPositionDirective', () => {
+describe('HidenItensDirective', () => {
   it('should create an instance', () => {
-    const directive = new ScrollPositionDirective();
+    const directive = new HidenItensDirective();
     expect(directive).toBeTruthy();
   });
 });

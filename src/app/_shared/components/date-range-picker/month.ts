@@ -37,7 +37,7 @@ export class Month{
         start = dateFns.startOfMonth(start);
         let numberOfMonth = dateFns.differenceInCalendarMonths(end, start);
 
-        for(let index = 1; index <= numberOfMonth; ++index)
+        for(let index = 0; index <= numberOfMonth; ++index)
             list.push(new Month( dateFns.addMonths(start,index)));
         
         return list;

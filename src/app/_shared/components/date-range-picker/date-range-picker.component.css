@@ -1,5 +1,9 @@
 /********************************** Input **********************************/
-
+.input-group.disabled > .input-container{
+    background-color: #eeeeee;
+    cursor: not-allowed;
+    border: 1px solid #ccc;
+}
 /**************** Input  ****************/
 .input-group > .input-container{
     width: 100%;
@@ -37,6 +41,9 @@
     display: none;
     -webkit-appearance: none;
 }
+.input-group.disabled > .input-container > input[type=date]{
+    cursor: not-allowed;
+}
 /**************** Buttons ****************/
 .input-group > .input-container  > .input-group-addon{
     background: transparent;
@@ -65,20 +72,24 @@
     -ms-user-select: none;
     user-select: none;
 }
-.input-group.disabled > .input-container > .input-group-addon > button.btn i{
-    cursor: not-allowed;
-}
 .input-group > .input-container > .input-group-addon > button.btn.hiden  i{
     opacity: 0;
 }
 .input-group > .input-container:hover > .input-group-addon > button.btn.hiden i{
     opacity: 1;
 }
+.input-group > .input-container  > .input-group-addon > i{
+    color:#337ab7;
+}
+.input-group.disabled > .input-container > .input-group-addon > button.btn i{
+    cursor: not-allowed;
+}
 .input-group.disabled> .input-container:hover > .input-group-addon > button.btn.hiden i{
     opacity: 0;
 }
-.input-group > .input-container  > .input-group-addon > i{
-    color:#337ab7;
+.input-group.disabled > .input-container  > .input-group-addon > i{
+    cursor: not-allowed;
+    color: #555;
 }
 /**************** Separator ****************/
 .input-group > .input-group-addon{
@@ -88,95 +99,97 @@
     color: white;
     font-weight: bolder;  
 }
-
+.input-group.disabled  > .input-group-addon{
+    background-color: #ccc;
+    cursor: not-allowed;
+    color: #555;
+}
 /********************************** PopOver **********************************/
-.popover{
+.popover-container{
     position: relative;
+}
+.popover-container > .popover{
     display: block;
     max-width: none;
-    overflow: hidden;
 
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    width: 100%;
 }
-.popover > .arrow{
+.popover-container > .popover > .arrow{
     transition: left 0.5s;
     left: 25%;
 }
-.popover > .arrow.end{
+.popover-container > .popover > .arrow.end{
     left: 75%;
 }
-.popover > .popover-content{
-    text-align: center;
-    display: table;
-    width: 100%;
+.popover-container > .popover > .popover-content{
     overflow: hidden;
-
 }
-/**************** Calendar ****************/
-.popover > .popover-content > .calendar{
-    display: -webkit-inline-box;
-    overflow-y: hidden;
-    max-height: 340px;
-    max-width: 1210px; 
-
-    -ms-writing-mode: rl-tb;
-    -webkit-writing-mode: horizontal-tb;
-    -moz-writing-mode: horizontal-tb;
-    -ms-writing-mode: horizontal-tb;
-    writing-mode: horizontal-tb;
-    direction: rtl
+.popover-container > .popover > .popover-content > .content-group{
+ display: table;
+  width: 100%;
+  text-align: center;
 }
-.popover > .popover-content > .button-container{
+/**************** Buttons Containers ****************/
+.popover-container > .popover > .popover-content > .content-group > .button-container{
     display: table-cell;
     vertical-align: middle;
     padding: 0px 10px;
+    width: 1px;
 }
-.popover > .popover-content > .button-container:nth-last-child(2){
+.popover-container > .popover > .popover-content > .content-group >  .button-container:nth-last-child(2){
     padding-right: 24px;
 }
-.popover > .popover-content > .button-container > button{
+.popover-container > .popover > .popover-content > .content-group >  .button-container > button{
     border-radius: 100%;
     padding: 7px;
 }
-.popover > .popover-content > .button-container > button:focus{
+.popover-container > .popover > .popover-content > .content-group >  .button-container > button:focus{
     border-color: #66afe9;
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);  
 }
-.popover > .popover-content > .button-container > button > i{
+.popover-container > .popover > .popover-content > .content-group >  .button-container > button > i{
     padding-top:3px;
     font-size: 30px; 
 }
-.popover > .popover-content > .calendar > .month {
-  display: inline-block;
-  width: 300px;
-  padding: 15px 10px;
-  padding-bottom: 20px;
+/**************** Calendar ****************/
+.popover-container > .popover > .popover-content > .content-group > .calendar{
+    display: -webkit-inline-box;
+    overflow: hidden;
+    max-height: 350px;
+    width: 100%;
+    text-align: -webkit-center; 
 }
-.popover > .popover-content > .calendar > .month > .header{
+.popover-container > .popover > .popover-content > .content-group > .calendar > .month {
+  display: inline-table;
+  width: 300px;
+  padding: 10px 20px;
+}
+.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .header{
      text-align: justify;
 }
-.popover > .popover-content > .calendar > .month > .header > .title{
+.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .header > .title{
     font-size: 15px;
     font-weight: bold;
     color: #9CA3A6;
     cursor: pointer;
 }
-.popover > .popover-content > .calendar > .month > hr{
+.popover-container > .popover > .popover-content > .content-group > .calendar > .month > hr{
   margin: 5px 0px;
 }
-.popover > .popover-content > .calendar > .month > .days-week {
+.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .days-week {
   display: inline-block;
   width: 100%;
   margin: 5px 0px;
 }
-.popover > .popover-content > .calendar > .month > .day,
-.popover > .popover-content > .calendar > .month > .days-week > .day-week {
+.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day,
+.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .days-week > .day-week {
   width: calc(100% / 7);
   display: block;
   float: left;
@@ -186,11 +199,11 @@
   font-weight: bold;
   color: #9CA3A6;
 }
-.popover > .popover-content > .calendar > .month > .day {
+.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day {
   margin-bottom: 3px;
   cursor: pointer;
 }
-.popover > .popover-content > .calendar > .month > .day > span {
+.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -200,50 +213,51 @@
   padding: 11px;
   border-radius: 100%;
 }
-.popover > .popover-content > .calendar > .month > .day > span.range{
+.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span.range{
   background: #ACD5ED;
   color: #333333;
   border-radius: 0%;
 }
-.popover > .popover-content > .calendar > .month > .day > span.start,
-.popover > .popover-content > .calendar > .month > .day > span.end,
-.popover > .popover-content > .calendar > .month > .day:hover  > span{
+.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span.start,
+.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span.end,
+.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day:hover  > span{
   background: #0070ba;
   color: #FFFFFF;
 }
-.popover > .popover-content > .calendar > .month > .day > span.start{
+.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span.start{
   border-top-left-radius: 100%;
   border-bottom-left-radius: 100%;
 }
-.popover > .popover-content > .calendar > .month > .day > span.end {
+.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span.end {
   border-top-right-radius: 100%;
   border-bottom-right-radius: 100%;
 }
-.popover > .popover-content > .calendar > .month > .day.disabled {
+.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day.disabled {
     color: #d1d5d6;
 }
-.popover > .popover-content > .calendar > .month > .day.disabled:hover > span {
+.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day.disabled:hover > span {
     background: transparent;
     color: #d1d5d6;
 }
 /**************** Side-Container ****************/
-.popover > .popover-content > .side-container{
+.popover-container > .popover > .popover-content > .content-group > .side-container{
     display: table-cell;
     vertical-align: middle;
     padding: 0px 10px;
-    text-align: left;
+    text-align: -webkit-center;
     border-left: 1px solid #d1d5d6;
     padding-left: 24px;
+    width: 80px;
 }
-.popover > .popover-content > .side-container > .button-content{
+.popover-container > .popover > .popover-content > .content-group > .side-container > .button-content{
     max-width: 150px;
 }
-.popover > .popover-content > .side-container > .button-content > button{
+.popover-container > .popover > .popover-content > .content-group > .side-container > .button-content > button{
      width: 138px;
      margin-bottom: 5px;
      border-radius: 15px;
 }
-.popover > .popover-content > .side-container > .button-content > button:focus{
+.popover-container > .popover > .popover-content > .content-group > .side-container > .button-content > button:focus{
     border-color: #66afe9;
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);

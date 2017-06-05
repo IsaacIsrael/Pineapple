@@ -1,8 +1,22 @@
 <article>
   <div class="form-group">
-    <p>Date Range picker: {{value1}}</p>
+    <p>Date Range picker: {{value1 | json}}</p>
   </div>
   <div class="form-group">
-    <date-range-picker></date-range-picker>
+    <date-range-picker [(value)]="value1"></date-range-picker>
+  </div>
+  <hr>
+  <div class="form-group">
+    <p>Date Range picker until today: {{value2 | json}}</p>
+  </div>
+  <div class="form-group">
+    <date-range-picker [untilToday]="true" [(value)]="value2"></date-range-picker>
+  </div>
+  <hr>
+  <div class="form-group">
+    <p>Date Range disable: {{value3 | json}}</p>
+  </div>
+   <div class="form-group">
+    <date-range-picker [disabled]="true" [(value)]="value3"></date-range-picker>
   </div>
 </article>

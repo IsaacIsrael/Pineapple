@@ -11,10 +11,10 @@ import { DateRangePickerComponent } from './components/date-range-picker/date-ra
 
 import { AutoSizeDirective } from './directives/auto-size.directive';
 import { ParentSizeDirective } from './directives/parent-size.directive';
+import { HidenItensDirective } from './directives/hiden-itens.directive';
 
 import { GroupByPipe } from './pipes/group-by.pipe';
 import { DateFormatPipe } from './pipes/date-format.pipe';
-import { ScrollPositionDirective } from './directives/scroll-position.directive';
 
 @NgModule({
     imports: [
@@ -43,11 +43,11 @@ import { ScrollPositionDirective } from './directives/scroll-position.directive'
         DateRangePickerComponent,
 
         GroupByPipe,
+        DateFormatPipe,
 
         AutoSizeDirective,
         ParentSizeDirective,
-        DateFormatPipe,
-        ScrollPositionDirective,
+        HidenItensDirective,
     ],
     providers: [],
 })

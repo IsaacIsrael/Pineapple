@@ -1,69 +1,79 @@
-<div class="input-group">
+<div class="input-group" [class.disabled]="disabled" >
+  
   <div class="input-group input-container left " [class.focus]="isFocus && range == 'start'" (click)="start.focus()">
-    <input #start type="date" class="form-control"  [value]="Value.Start | dateFormat:'YYYY-MM-DD'"
+    <input #start type="date" class="form-control" [disabled]="disabled"  [value]="Value.Start | dateFormat:'YYYY-MM-DD'"
      (focus)="onFocusEventHandler($event,'start')" (input)="onInputEventHandler($event,'start')" >
     <div class="input-group-addon">
-        <button type="button" class="btn btn-default" [class.hiden]="!isFocus" (click)="onClearEventHandler($event,'start')">
+        <button type="button" class="btn btn-default"  [disabled]="disabled" [class.hiden]="!isFocus" (click)="onClearDateEventHandler($event,'start')">
               <i class="material-icons">clear</i>
         </button>
         <i class="material-icons">date_range</i>
     </div>
   </div>
-
-  <div class="input-group-addon">| </div>
   
+  <div class="input-group-addon">|</div>
+
   <div class="input-group input-container right " [class.focus]="isFocus && range == 'end'" (click)="end.focus()" >
-    <input #end type="date" class="form-control" [value]="Value.End | dateFormat:'YYYY-MM-DD'" 
+    <input #end type="date" class="form-control" [disabled]="disabled" [value]="Value.End | dateFormat:'YYYY-MM-DD'" 
       (focus)="onFocusEventHandler($event,'end')" (input)="onInputEventHandler($event,'end')" >
     <div class="input-group-addon">
-        <button type="button" class="btn btn-default" [class.hiden]="!isFocus" (click)="onClearEventHandler($event,'end')">
+        <button type="button" class="btn btn-default" [disabled]="disabled" [class.hiden]="!isFocus" (click)="onClearDateEventHandler($event,'end')">
               <i class="material-icons">clear</i>
         </button>
         <i class="material-icons icons">date_range</i>
     </div>
   </div>
+
 </div>
 
-<div class="popover bottom">
-  <div class="arrow" [class.end]="range == 'end'"></div>
-  <div class="popover-content">
-    <div class="button-container">
-      <button type="button" class="btn btn-primary">
-         <i class="material-icons">chevron_left</i>
-      </button>
-      </div>
-    <div  class="calendar" scrollPosition>
-      
-      <div class="month" *ngFor="let month of Calendar" >
-        <div class="header">
-          <span class="title">{{month?.month | date:'MMMM y'}}</span>
+<div class="popover-container"> 
+  <div class="popover bottom" [@slide]=" isFocus ? 'true' : 'false'">
+    <div class="arrow" [class.end]="range == 'end'"></div>
+    <div class="popover-content">
+      <div class="content-group">
+
+        <div class="button-container">
+          <button type="button" class="btn btn-primary" (click)="onChangeCalendarEventHandler($event,'preview')" >
+            <i class="material-icons">chevron_left</i>
+          </button>
         </div>
-        <hr>
-        <div class="days-week">
-          <span class="day-week" *ngFor="let dayWeek of ['Dom','Seg', 'Ter', 'Quar', 'Qui', 'Sex', 'Sab']">
-            {{ dayWeek }}
-          </span>
-        </div> 
-        <div class="day" [class.disabled]="isDisable(day)" *ngFor="let day of month?.days;" (click)="onSelectDateEventHandler($event, day)">
-          <span *ngIf="month?.isOnThisMonth(day)" 
-                 [ngClass]="{'range':Value.isOnRange(day) , 'start':Value.isBeginning(day) , 'end':Value.isEnd(day)}">
-              {{day |date:'dd'}}
-          </span>
+
+        <div class="calendar" hidenItens>
+          <div class="month" *ngFor="let month of Calendar" >
+            <div class="header">
+              <span class="title">{{month?.month | date:'MMMM y'}}</span>
+            </div>
+            <hr>
+            <div class="days-week">
+              <span class="day-week" *ngFor="let dayWeek of ['Dom','Seg', 'Ter', 'Quar', 'Qui', 'Sex', 'Sab']">
+                {{ dayWeek }}
+              </span>
+            </div> 
+            <div class="day" [class.disabled]="isDisable(day)" *ngFor="let day of month?.days;" (click)="onSelectDateEventHandler($event, day)">
+              <span *ngIf="month?.isOnThisMonth(day)" 
+                    [ngClass]="{'range':Value.isOnRange(day) , 'start':Value.isBeginning(day) , 'end':Value.isEnd(day)}">
+                  {{day |date:'dd'}}
+              </span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-     <div class="button-container">
-       <button type="button" class="btn btn-primary">
-         <i class="material-icons">chevron_right</i>
-       </button>
-      </div>
-    <div class="side-container">
-      <div class="button-content">
-        <button type="button" class="btn btn-primary">Última Semana</button>
-        <button type="button" class="btn btn-primary">2 Semanas atrás</button>
-        <button type="button" class="btn btn-primary">3 Semanas atrás</button>
-        <button type="button" class="btn btn-primary">4 Semanas atrás</button>
-        <button type="button" class="btn btn-danger">Limpar</button>
+
+        <div class="button-container">
+          <button type="button" class="btn btn-primary" (click)="onChangeCalendarEventHandler($event,'next')">
+            <i class="material-icons">chevron_right</i>
+          </button>
+        </div>
+        
+        <div class="side-container">
+          <div class="button-content">
+            <button type="button" class="btn btn-primary" (click)="onSelectWeekEventHandler($event,0)">Última Semana</button>
+            <button type="button" class="btn btn-primary" (click)="onSelectWeekEventHandler($event,1)">2 Semanas atrás</button>
+            <button type="button" class="btn btn-primary" (click)="onSelectWeekEventHandler($event,2)">3 Semanas atrás</button>
+            <button type="button" class="btn btn-primary" (click)="onSelectWeekEventHandler($event,3)">4 Semanas atrás</button>
+            <button type="button" class="btn btn-danger" (click)="onClearRangeEventHandler($event)" >Limpar</button>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
