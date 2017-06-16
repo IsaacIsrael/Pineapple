@@ -162,7 +162,7 @@
 .popover-container > .popover > .popover-content > .content-group > .calendar{
     display: -webkit-inline-box;
     overflow: hidden;
-    max-height: 350px;
+    height: 350px;
     width: 100%;
     text-align: -webkit-center; 
 }

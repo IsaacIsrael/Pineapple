@@ -91,6 +91,7 @@ export class DateRangePickerComponent implements OnInit {
   }
 
   /*******************************************/
+
   @HostListener('document:keyup.Shift.Tab', ['$event'])
   @HostListener('document:keyup.Tab', ['$event'])
   @HostListener('document:mousedown', ['$event'])
@@ -101,12 +102,15 @@ export class DateRangePickerComponent implements OnInit {
         this.isFocus = false;
   }
 
+  /*******************************************/
+
   constructor(private _elementRef:ElementRef) { }
 
   ngOnInit() {
     this.CalendarDate = new Date ();
   } 
   /*******************************************/
+
 
   private previousMonth(){
     this.CalendarRange = new DateRange( dateFns.subMonths(this.CalendarRange.End,NUMBER_OF_MONTH+1) , dateFns.subMonths(this.CalendarRange.End,1));
@@ -133,8 +137,6 @@ export class DateRangePickerComponent implements OnInit {
   }
 
   /*******************************************/
-
-  
 
   private onFocusEventHandler(e:Event,arg:any):void{
     this.range = arg;

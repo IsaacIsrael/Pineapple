@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
   selector: '[hidenItens]'
 })
 export class HidenItensDirective implements OnInit ,AfterViewChecked  {
+  
   @Input() direction: 'first'|'last' = 'first';
 
   /*******************************************/
