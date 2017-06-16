@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import * as _ from "lodash";
 
 import { SettingService } from './../../../setting.service';
@@ -8,7 +8,7 @@ import { SettingService } from './../../../setting.service';
   templateUrl: './select-options.test.component.html',
   styleUrls: ['./select-options.test.component.css']
 })
-export class SelectOptionsTestComponent implements OnInit {
+export class SelectOptionsTestComponent{
 
   private value1: any = "[Segment 5 ]";
   private value2: any = { id: 1, name: "[Segment 1 ]" };
@@ -48,8 +48,5 @@ export class SelectOptionsTestComponent implements OnInit {
   /*******************************************/
 
   constructor(private _settingService: SettingService) { }
-
-  ngOnInit() {
-  }
 
 }

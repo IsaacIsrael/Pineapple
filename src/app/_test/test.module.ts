@@ -12,6 +12,7 @@ import { SupplierRunningDateService } from './running-date/supplier.running-date
 import { UserRunningDateService } from './running-date/user.running-date.service';
 import { DateRangePickerTestComponent } from './test/date-range-picker.test/date-range-picker.test.component';
 import { SelectOptionsTestComponent } from './test/select-options.test/select-options.test.component';
+import { AutoCompleteTestComponent } from './test/auto-complete.test/auto-complete.test.component';
 
 @NgModule({
     imports: [
@@ -27,6 +28,7 @@ import { SelectOptionsTestComponent } from './test/select-options.test/select-op
         DateRangePickerTestComponent,
         SelectOptionsTestComponent,
         SearchBoxTestComponent,
+        AutoCompleteTestComponent,
     ],
     providers: [
         SupplierRunningDateService,
