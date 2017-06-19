@@ -2,12 +2,11 @@ import { Component, OnInit, HostListener ,Input,Output, EventEmitter ,ElementRef
 import * as _ from "lodash";
 import * as dateFns from 'date-fns';
 
-import { Slide } from '../../animations/slideIn-slideOut.animation'
-
 import { Month } from './month';
 import { DateRange } from './date-range';
 
-const NUMBER_OF_MONTH :number = 3;
+import { Slide } from '../../animations/slideIn-slideOut.animation'
+
 
 @Component({
   selector: 'date-range-picker',
@@ -16,172 +15,172 @@ const NUMBER_OF_MONTH :number = 3;
   animations: [ Slide(500,-15) ],
 })
 export class DateRangePickerComponent implements OnInit {
+  /******************* Inputs & Outputs ************************/ 
+
+    @Input()untilToday: boolean = false;
+    @Input()disabled: boolean = false;
+    @Input()numberOfMonth: number = 4;
+    @Input()set value(value:{'start':Date,'end':Date}){
+      if(value)
+        this._value = new DateRange(value.start,value.end);
+    }
+    get value():{'start':Date,'end':Date}{
+      return {'start':this._value.Start,'end':this._value.End};
+    }
+    @Output() valueChange : EventEmitter<any> = new EventEmitter();
+
+  /******************** Fields ***********************/
+
+    private range: 'start' | 'end' = 'start';
+    private isFocus:  boolean = false;
+
+    private _calendar:Array<Month> = new Array<Month>();
+    private _calendarRange:DateRange = new DateRange(); 
+    private _value:DateRange = new DateRange();
+
+  /******************* Properties ************************/
+
+    private set CalendarDate(value:Date){
+      if( !value || this.CalendarRange.isOnRange(value))
+        return;
+
+      let end = dateFns.startOfMonth(value);
+      this.CalendarRange = new DateRange(dateFns.subMonths(end ,this.numberOfMonth-1),end);
+    }
+
+    private set CalendarRange(value:DateRange){
+
+      if(_.isEqual(this._calendarRange,value))
+        return;
+
+      this._calendarRange = value;
+      this._calendar =  Month.forEachMonth(this._calendarRange.Start,this._calendarRange.End);
+    }
+    private get CalendarRange():DateRange{
+        return this._calendarRange;
+    }
   
-  @Input()untilToday: boolean = false;
-  @Input()disabled: boolean = false;
+    private set ValueDate(value:Date){
 
-  @Output() valueChange : EventEmitter<any> = new EventEmitter();
-  @Input()set value(value:{'start':Date,'end':Date}){
-    if(value)
-      this._value = new DateRange(value.start,value.end);
-  }
-  get value():{'start':Date,'end':Date}{
-    return {'start':this._value.Start,'end':this._value.End};
-  }
+      if(_.isEqual(this.ValueDate, value))
+        return;
 
-  /*******************************************/
+      this._value[_.capitalize(this.range)] = value
+      this.CalendarDate = value ;
+      this.valueChange.emit(this.value);
+    }
+    private get ValueDate():Date{
+      return this._value[_.capitalize(this.range)];
+    }
 
-  private range: 'start' | 'end' = 'start';
-  private isFocus:  boolean = false;
+    private set Value(value:DateRange){
+      if(_.isEqual(this._value, value))
+        return;
 
-  private _calendar:Array<Month> = new Array<Month>();
-  private _calendarRange:DateRange = new DateRange(); 
-  private _value:DateRange = new DateRange();
+      this._value = value
+      this.CalendarDate = value.End ;
+      this.valueChange.emit(this.value);
+    }
+    private get Value():DateRange{
+      return this._value;
+    }
 
+    private get Calendar(): Array<Month>{
+      return this._calendar;
+    }
 
-  /*******************************************/
+  /*******************Host Listeners************************/
 
-  private set CalendarDate(value:Date){
-    if( !value || this.CalendarRange.isOnRange(value))
-      return;
+    @HostListener('document:keyup.Shift.Tab', ['$event'])
+    @HostListener('document:keyup.Tab', ['$event'])
+    @HostListener('document:mousedown', ['$event'])
+    onBlurHostListener(e: Event) {
+        let target = e.srcElement || e.target;
 
-    let end = dateFns.startOfMonth(value);
-    this.CalendarRange = new DateRange(dateFns.subMonths(end ,NUMBER_OF_MONTH),end);
-  }
+        if ( this.isFocus && !this._elementRef.nativeElement.contains(e.target))
+          this.isFocus = false;
+    }
 
-  private set CalendarRange(value:DateRange){
+  /******************Constructor*************************/
 
-    if(_.isEqual(this._calendarRange,value))
-      return;
+    constructor(private _elementRef:ElementRef) { }
 
-    this._calendarRange = value;
-    this._calendar =  Month.forEachMonth(this._calendarRange.Start,this._calendarRange.End);
-  }
-  private get CalendarRange():DateRange{
-      return this._calendarRange;
-  }
- 
-  private set ValueDate(value:Date){
+    ngOnInit() {
+      this.CalendarDate = new Date ();
+    } 
 
-    if(_.isEqual(this.ValueDate, value))
-      return;
+  /***************** Methods**************************/
 
-    this._value[_.capitalize(this.range)] = value
-    this.CalendarDate = value ;
-    this.valueChange.emit(this.value);
-  }
-  private get ValueDate():Date{
-    return this._value[_.capitalize(this.range)];
-  }
+    private previousMonth(){
+      this.CalendarRange = new DateRange( dateFns.subMonths(this.CalendarRange.End,this.numberOfMonth) , dateFns.subMonths(this.CalendarRange.End,1));
+    }
 
-  private set Value(value:DateRange){
-    if(_.isEqual(this._value, value))
-      return;
+    private nextMonth(){
+      let date =  dateFns.addMonths(this.CalendarRange.End,1)
 
-    this._value = value
-    this.CalendarDate = value.End ;
-    this.valueChange.emit(this.value);
-  }
-  private get Value():DateRange{
-    return this._value;
-  }
+      if(!this.isDisable(date))
+        this.CalendarDate = date;
+    }
 
-  private get Calendar(): Array<Month>{
-    return this._calendar;
-  }
+    private isDisable(value:any):boolean{
+      return this.untilToday && dateFns.isAfter(value,new Date()) ;
+    }
 
-  /*******************************************/
+    private rangeChange():void{
+      this.range =  this.range == 'start' ? 'end': 'start';
+    }
 
-  @HostListener('document:keyup.Shift.Tab', ['$event'])
-  @HostListener('document:keyup.Tab', ['$event'])
-  @HostListener('document:mousedown', ['$event'])
-  onBlurHostListener(e: Event) {
-      let target = e.srcElement || e.target;
+    private setWeekRange(weeknumber:number):void{
+      let today = dateFns.startOfDay(new Date());
+      this.Value = new DateRange(dateFns.subWeeks(today,1 + weeknumber),dateFns.subWeeks(today,0 + weeknumber));
+    }
 
-      if ( this.isFocus && !this._elementRef.nativeElement.contains(e.target))
-        this.isFocus = false;
-  }
+ /******************Events*************************/
 
-  /*******************************************/
+    private onFocusEventHandler(e:Event,arg:any):void{
+      this.range = arg;
+      this.isFocus = true;
+      this.CalendarDate = this.ValueDate;
+    }
 
-  constructor(private _elementRef:ElementRef) { }
+    private onInputEventHandler(e:Event):void{
+      let element : any = e.target;
+      let values = element.value.split('-');
+      let value  = values[0] >= 1902  ? dateFns.startOfDay(new Date(values[0], values[1]-1, values[2])) : this.ValueDate;
 
-  ngOnInit() {
-    this.CalendarDate = new Date ();
-  } 
-  /*******************************************/
+      if(!this.isDisable(value))
+        this.ValueDate  = value;
+      
+      if(!!this.ValueDate || this.isDisable(value) )
+        element.value =  dateFns.format(this.ValueDate,"YYYY-MM-DD");
+      
+    }
 
+    private onClearDateEventHandler(e:MouseEvent,arg:any):void{
+      this.range = arg;
+      this.ValueDate = undefined;
+    }
 
-  private previousMonth(){
-    this.CalendarRange = new DateRange( dateFns.subMonths(this.CalendarRange.End,NUMBER_OF_MONTH+1) , dateFns.subMonths(this.CalendarRange.End,1));
-  }
+    private onClearRangeEventHandler(e:MouseEvent):void{
+      this.Value = new DateRange();
+    }
 
-  private nextMonth(){
-    let date =  dateFns.addMonths(this.CalendarRange.End,1)
+    private onSelectDateEventHandler(e:MouseEvent,arg:any):void{
+      if(this.isDisable(arg))
+        return;
 
-    if(!this.isDisable(date))
-      this.CalendarDate = date;
-  }
+      this.ValueDate = arg;
 
-  private isDisable(value:any):boolean{
-    return this.untilToday && dateFns.isAfter(value,new Date()) ;
-  }
+      if( arg && _.isEqual(this.ValueDate,arg) )
+        this.rangeChange();
+    }
 
-  private rangeChange():void{
-    this.range =  this.range == 'start' ? 'end': 'start';
-  }
+    private onChangeCalendarEventHandler(e:MouseEvent,arg:any):void{
+      arg ==  'next' ?  this.nextMonth():this.previousMonth() ;
+    }
 
-  private setWeekRange(weeknumber:number):void{
-    let today = dateFns.startOfDay(new Date());
-    this.Value = new DateRange(dateFns.subWeeks(today,1 + weeknumber),dateFns.subWeeks(today,0 + weeknumber));
-  }
-
-  /*******************************************/
-
-  private onFocusEventHandler(e:Event,arg:any):void{
-    this.range = arg;
-    this.isFocus = true;
-    this.CalendarDate = this.ValueDate;
-  }
-
-  private onInputEventHandler(e:Event):void{
-    let element : any = e.target;
-    let values = element.value.split('-');
-    let value  = values[0] >= 1902  ? dateFns.startOfDay(new Date(values[0], values[1]-1, values[2])) : this.ValueDate;
-
-    if(!this.isDisable(value))
-      this.ValueDate  = value;
-   
-   if(!!this.ValueDate || this.isDisable(value) )
-      element.value =  dateFns.format(this.ValueDate,"YYYY-MM-DD");
-    
-  }
-
-  private onClearDateEventHandler(e:MouseEvent,arg:any):void{
-    this.range = arg;
-    this.ValueDate = undefined;
-  }
-
-  private onClearRangeEventHandler(e:MouseEvent):void{
-    this.Value = new DateRange();
-  }
-
-  private onSelectDateEventHandler(e:MouseEvent,arg:any):void{
-    if(this.isDisable(arg))
-      return;
-
-    this.ValueDate = arg;
-
-    if( arg && _.isEqual(this.ValueDate,arg) )
-      this.rangeChange();
-  }
-
-  private onChangeCalendarEventHandler(e:MouseEvent,arg:any):void{
-    arg ==  'next' ?  this.nextMonth():this.previousMonth() ;
-  }
-
-  private onSelectWeekEventHandler(e:MouseEvent,arg:any):void{
-    this.setWeekRange(arg);
-    this.range = 'start';
-  }
+    private onSelectWeekEventHandler(e:MouseEvent,arg:any):void{
+      this.setWeekRange(arg);
+      this.range = 'start';
+    }
 }

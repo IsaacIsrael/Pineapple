@@ -1,265 +1,265 @@
 /********************************** Input **********************************/
-.input-group.disabled > .input-container{
-    background-color: #eeeeee;
-    cursor: not-allowed;
-    border: 1px solid #ccc;
-}
-/**************** Input  ****************/
-.input-group > .input-container{
-    width: 100%;
-    background-color: #ffffff;
-    border: 1px solid rgb(204, 204, 204);
-    border-radius: 5px; 
-    overflow: hidden;
-    cursor: pointer;
+    .input-group.disabled > .input-container{
+        background-color: #eeeeee;
+        cursor: not-allowed;
+        border: 1px solid #ccc;
+    }
+    /**************** Input  ****************/
+    .input-group > .input-container{
+        width: 100%;
+        background-color: #ffffff;
+        border: 1px solid rgb(204, 204, 204);
+        border-radius: 5px; 
+        overflow: hidden;
+        cursor: pointer;
 
-    transition: all .3s ease-in-out; 
-}
-.input-group > .input-container.focus{
-    border-color: #66afe9;
-    outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);    
-}
-.input-group > .input-container.left{
-    border-top-right-radius:0px;
-    border-bottom-right-radius: 0px; 
-}
-.input-group > .input-container.right{
-    border-top-left-radius:0px;
-    border-bottom-left-radius: 0px; 
-}
-.input-group > .input-container > input[type=date]{
-    text-align: center;
-    border: none;
-    box-shadow: none;
-     cursor: pointer;
-}
-.input-group > .input-container > input[type=date]::-webkit-clear-button,
-.input-group > .input-container > input[type=date]::-webkit-inner-spin-button,
-.input-group > .input-container > input[type=date]::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
-}
-.input-group.disabled > .input-container > input[type=date]{
-    cursor: not-allowed;
-}
-/**************** Buttons ****************/
-.input-group > .input-container  > .input-group-addon{
-    background: transparent;
-    border: none;
-}
-.input-group > .input-container  > .input-group-addon > button.btn{
-    padding: 0px;
-    margin: 0px;
-    border: none;
-    box-shadow: none;
-    outline-offset: 0px;
-    outline-width:0px;
-    background-color: transparent;
-}
-.input-group > .input-container  > .input-group-addon > i,
-.input-group > .input-container  > .input-group-addon >  button.btn i{
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 18px;
-    opacity: 1;
-    vertical-align: middle;
+        transition: all .3s ease-in-out; 
+    }
+    .input-group > .input-container.focus{
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);    
+    }
+    .input-group > .input-container.left{
+        border-top-right-radius:0px;
+        border-bottom-right-radius: 0px; 
+    }
+    .input-group > .input-container.right{
+        border-top-left-radius:0px;
+        border-bottom-left-radius: 0px; 
+    }
+    .input-group > .input-container > input[type=date]{
+        text-align: center;
+        border: none;
+        box-shadow: none;
+        cursor: pointer;
+    }
+    .input-group > .input-container > input[type=date]::-webkit-clear-button,
+    .input-group > .input-container > input[type=date]::-webkit-inner-spin-button,
+    .input-group > .input-container > input[type=date]::-webkit-calendar-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
+    }
+    .input-group.disabled > .input-container > input[type=date]{
+        cursor: not-allowed;
+    }
+    /**************** Buttons ****************/
+    .input-group > .input-container  > .input-group-addon{
+        background: transparent;
+        border: none;
+    }
+    .input-group > .input-container  > .input-group-addon > button.btn{
+        padding: 0px;
+        margin: 0px;
+        border: none;
+        box-shadow: none;
+        outline-offset: 0px;
+        outline-width:0px;
+        background-color: transparent;
+    }
+    .input-group > .input-container  > .input-group-addon > i,
+    .input-group > .input-container  > .input-group-addon >  button.btn i{
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 18px;
+        opacity: 1;
+        vertical-align: middle;
 
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-.input-group > .input-container > .input-group-addon > button.btn.hiden  i{
-    opacity: 0;
-}
-.input-group > .input-container:hover > .input-group-addon > button.btn.hiden i{
-    opacity: 1;
-}
-.input-group > .input-container  > .input-group-addon > i{
-    color:#337ab7;
-}
-.input-group.disabled > .input-container > .input-group-addon > button.btn i{
-    cursor: not-allowed;
-}
-.input-group.disabled> .input-container:hover > .input-group-addon > button.btn.hiden i{
-    opacity: 0;
-}
-.input-group.disabled > .input-container  > .input-group-addon > i{
-    cursor: not-allowed;
-    color: #555;
-}
-/**************** Separator ****************/
-.input-group > .input-group-addon{
-    border-left:none;
-    border-right: none;
-    background-color: #337ab7;
-    color: white;
-    font-weight: bolder;  
-}
-.input-group.disabled  > .input-group-addon{
-    background-color: #ccc;
-    cursor: not-allowed;
-    color: #555;
-}
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .input-group > .input-container > .input-group-addon > button.btn.hiden  i{
+        opacity: 0;
+    }
+    .input-group > .input-container:hover > .input-group-addon > button.btn.hiden i{
+        opacity: 1;
+    }
+    .input-group > .input-container  > .input-group-addon > i{
+        color:#337ab7;
+    }
+    .input-group.disabled > .input-container > .input-group-addon > button.btn i{
+        cursor: not-allowed;
+    }
+    .input-group.disabled> .input-container:hover > .input-group-addon > button.btn.hiden i{
+        opacity: 0;
+    }
+    .input-group.disabled > .input-container  > .input-group-addon > i{
+        cursor: not-allowed;
+        color: #555;
+    }
+    /**************** Separator ****************/
+    .input-group > .input-group-addon{
+        border-left:none;
+        border-right: none;
+        background-color: #337ab7;
+        color: white;
+        font-weight: bolder;  
+    }
+    .input-group.disabled  > .input-group-addon{
+        background-color: #ccc;
+        cursor: not-allowed;
+        color: #555;
+    }
 /********************************** PopOver **********************************/
-.popover-container{
-    position: relative;
-}
-.popover-container > .popover{
-    display: block;
-    max-width: none;
+    .popover-container{
+        position: relative;
+    }
+    .popover-container > .popover{
+        display: block;
+        max-width: none;
 
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    width: 100%;
-}
-.popover-container > .popover > .arrow{
-    transition: left 0.5s;
-    left: 25%;
-}
-.popover-container > .popover > .arrow.end{
-    left: 75%;
-}
-.popover-container > .popover > .popover-content{
-    overflow: hidden;
-}
-.popover-container > .popover > .popover-content > .content-group{
- display: table;
-  width: 100%;
-  text-align: center;
-}
-/**************** Buttons Containers ****************/
-.popover-container > .popover > .popover-content > .content-group > .button-container{
-    display: table-cell;
-    vertical-align: middle;
-    padding: 0px 10px;
-    width: 1px;
-}
-.popover-container > .popover > .popover-content > .content-group >  .button-container:nth-last-child(2){
-    padding-right: 24px;
-}
-.popover-container > .popover > .popover-content > .content-group >  .button-container > button{
-    border-radius: 100%;
-    padding: 7px;
-}
-.popover-container > .popover > .popover-content > .content-group >  .button-container > button:focus{
-    border-color: #66afe9;
-    outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);  
-}
-.popover-container > .popover > .popover-content > .content-group >  .button-container > button > i{
-    padding-top:3px;
-    font-size: 30px; 
-}
-/**************** Calendar ****************/
-.popover-container > .popover > .popover-content > .content-group > .calendar{
-    display: -webkit-inline-box;
-    overflow: hidden;
-    height: 350px;
-    width: 100%;
-    text-align: -webkit-center; 
-}
-.popover-container > .popover > .popover-content > .content-group > .calendar > .month {
-  display: inline-table;
-  width: 300px;
-  padding: 10px 20px;
-}
-.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .header{
-     text-align: justify;
-}
-.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .header > .title{
-    font-size: 15px;
-    font-weight: bold;
-    color: #9CA3A6;
-    cursor: pointer;
-}
-.popover-container > .popover > .popover-content > .content-group > .calendar > .month > hr{
-  margin: 5px 0px;
-}
-.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .days-week {
-  display: inline-block;
-  width: 100%;
-  margin: 5px 0px;
-}
-.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day,
-.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .days-week > .day-week {
-  width: calc(100% / 7);
-  display: block;
-  float: left;
-  text-align: center;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        width: 100%;
+    }
+    .popover-container > .popover > .arrow{
+        transition: left 0.5s;
+        left: 25%;
+    }
+    .popover-container > .popover > .arrow.end{
+        left: 75%;
+    }
+    .popover-container > .popover > .popover-content{
+        overflow: hidden;
+    }
+    .popover-container > .popover > .popover-content > .content-group{
+        display: table;
+        width: 100%;
+        text-align: center;
+    }
+    /**************** Buttons Containers ****************/
+    .popover-container > .popover > .popover-content > .content-group > .button-container{
+        display: table-cell;
+        vertical-align: middle;
+        padding: 0px 10px;
+        width: 1px;
+    }
+    .popover-container > .popover > .popover-content > .content-group >  .button-container:nth-last-child(2){
+        padding-right: 24px;
+    }
+    .popover-container > .popover > .popover-content > .content-group >  .button-container > button{
+        border-radius: 100%;
+        padding: 7px;
+    }
+    .popover-container > .popover > .popover-content > .content-group >  .button-container > button:focus{
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);  
+    }
+    .popover-container > .popover > .popover-content > .content-group >  .button-container > button > i{
+        padding-top:3px;
+        font-size: 30px; 
+    }
+    /**************** Calendar ****************/
+    .popover-container > .popover > .popover-content > .content-group > .calendar{
+        display: -webkit-inline-box;
+        overflow: hidden;
+        height: 350px;
+        width: 100%;
+        text-align: -webkit-center; 
+    }
+    .popover-container > .popover > .popover-content > .content-group > .calendar > .month {
+        display: inline-table;
+        width: 300px;
+        padding: 10px 20px;
+    }
+    .popover-container > .popover > .popover-content > .content-group > .calendar > .month > .header{
+        text-align: justify;
+    }
+    .popover-container > .popover > .popover-content > .content-group > .calendar > .month > .header > .title{
+        font-size: 15px;
+        font-weight: bold;
+        color: #9CA3A6;
+        cursor: pointer;
+    }
+    .popover-container > .popover > .popover-content > .content-group > .calendar > .month > hr{
+        margin: 5px 0px;
+    }
+    .popover-container > .popover > .popover-content > .content-group > .calendar > .month > .days-week {
+        display: inline-block;
+        width: 100%;
+        margin: 5px 0px;
+    }
+    .popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day,
+    .popover-container > .popover > .popover-content > .content-group > .calendar > .month > .days-week > .day-week {
+        width: calc(100% / 7);
+        display: block;
+        float: left;
+        text-align: center;
 
-  font-size: 13px;
-  font-weight: bold;
-  color: #9CA3A6;
-}
-.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day {
-  margin-bottom: 3px;
-  cursor: pointer;
-}
-.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  float: left;
-  width: 100%;
-  height: 100%;
-  padding: 11px;
-  border-radius: 100%;
-}
-.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span.range{
-  background: #ACD5ED;
-  color: #333333;
-  border-radius: 0%;
-}
-.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span.start,
-.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span.end,
-.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day:hover  > span{
-  background: #0070ba;
-  color: #FFFFFF;
-}
-.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span.start{
-  border-top-left-radius: 100%;
-  border-bottom-left-radius: 100%;
-}
-.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span.end {
-  border-top-right-radius: 100%;
-  border-bottom-right-radius: 100%;
-}
-.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day.disabled {
-    color: #d1d5d6;
-}
-.popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day.disabled:hover > span {
-    background: transparent;
-    color: #d1d5d6;
-}
-/**************** Side-Container ****************/
-.popover-container > .popover > .popover-content > .content-group > .side-container{
-    display: table-cell;
-    vertical-align: middle;
-    padding: 0px 10px;
-    text-align: -webkit-center;
-    border-left: 1px solid #d1d5d6;
-    padding-left: 24px;
-    width: 80px;
-}
-.popover-container > .popover > .popover-content > .content-group > .side-container > .button-content{
-    max-width: 150px;
-}
-.popover-container > .popover > .popover-content > .content-group > .side-container > .button-content > button{
-     width: 138px;
-     margin-bottom: 5px;
-     border-radius: 15px;
-}
-.popover-container > .popover > .popover-content > .content-group > .side-container > .button-content > button:focus{
-    border-color: #66afe9;
-    outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);    
-}
+        font-size: 13px;
+        font-weight: bold;
+        color: #9CA3A6;
+    }
+    .popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day {
+        margin-bottom: 3px;
+        cursor: pointer;
+    }
+    .popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        float: left;
+        width: 100%;
+        height: 100%;
+        padding: 11px;
+        border-radius: 100%;
+    }
+    .popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span.range{
+        background: #ACD5ED;
+        color: #333333;
+        border-radius: 0%;
+    }
+    .popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span.start,
+    .popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span.end,
+    .popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day:hover  > span{
+        background: #0070ba;
+        color: #FFFFFF;
+    }
+    .popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span.start{
+        border-top-left-radius: 100%;
+        border-bottom-left-radius: 100%;
+    }
+    .popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day > span.end {
+        border-top-right-radius: 100%;
+        border-bottom-right-radius: 100%;
+    }
+    .popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day.disabled {
+        color: #d1d5d6;
+    }
+    .popover-container > .popover > .popover-content > .content-group > .calendar > .month > .day.disabled:hover > span {
+        background: transparent;
+        color: #d1d5d6;
+    }
+    /**************** Side-Container ****************/
+    .popover-container > .popover > .popover-content > .content-group > .side-container{
+        display: table-cell;
+        vertical-align: middle;
+        padding: 0px 10px;
+        text-align: -webkit-center;
+        border-left: 1px solid #d1d5d6;
+        padding-left: 24px;
+        width: 80px;
+    }
+    .popover-container > .popover > .popover-content > .content-group > .side-container > .button-content{
+        max-width: 150px;
+    }
+    .popover-container > .popover > .popover-content > .content-group > .side-container > .button-content > button{
+        width: 138px;
+        margin-bottom: 5px;
+        border-radius: 15px;
+    }
+    .popover-container > .popover > .popover-content > .content-group > .side-container > .button-content > button:focus{
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);    
+    }
