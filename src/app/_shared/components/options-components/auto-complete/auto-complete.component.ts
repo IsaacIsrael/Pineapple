@@ -94,7 +94,9 @@ export class AutoCompleteComponent extends OptionsComponent  implements OnInit {
     }
     
     private onKeyDownBackspaceEventHandler(e:KeyboardEvent):void{
-        if(this.multiSelect && _.isEmpty(this.keyword))
-          this.Value = _.last(this.Value);
+        setTimeout( ()=>{
+           if(this.multiSelect && _.isEmpty(this.keyword))
+            this.Value = _.last(this.Value);
+        },500);
     }
 }
