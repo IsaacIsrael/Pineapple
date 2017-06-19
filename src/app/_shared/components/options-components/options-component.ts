@@ -5,79 +5,95 @@ import * as _ from "lodash";
 
 export abstract class OptionsComponent {
     
-    @Input()  options: any = [];
-    @Input()  optionField: string = "";
-    @Output() valueChange : EventEmitter<any> = new EventEmitter();
+    /******************* Inputs & Outputs ************************/
 
-    private _multiSelect: boolean = false
-    private _valueOption : ValueOption;
+        @Input()  options: any = [];
+        @Input()  optionField: string = "";
+        @Input() set multiSelect(value:boolean){
+            this._multiSelect = value; 
+        }  
+        get multiSelect():boolean{
+            return this._multiSelect;
+        }
+        @Input() set value(value: any){
+            if(this.validateInputValue(value))
+                this.ValueOption.Value = value;
+        }
+        get value(): any{
+            return this.ValueOption.Value;
+        };
+
+        @Output() valueChange : EventEmitter<any> = new EventEmitter();
+
+    /******************** Fields ***********************/
+
+        private _multiSelect: boolean = false
+        private _valueOption : ValueOption;
     
 
-    /*******************************************/
+    /******************* Properties ************************/
 
-    @Input() set multiSelect(value:boolean){
-        this._multiSelect = value; 
-    }  
-    get multiSelect():boolean{
-        return this._multiSelect;
-    }
+        private get ValueOption():ValueOption{
+            if( _.isEmpty(this._valueOption))
+                this.initializeValueOption();
+            
+            return this._valueOption;
+        }
 
-    @Input() set value(value: any){
-        if(this.checkValue(value) )
+        protected abstract get FunctionOption():any;
+
+        protected abstract get ArrayOption():any;
+
+        protected set Value(value:any){
             this.ValueOption.Value = value;
-    }
-    get value(): any{
-        return this.ValueOption.Value;
-    };
+        }
+        protected get Value():any{
+            return this.ValueOption.Value
+        }
 
-    private get ValueOption():ValueOption{
-        if( _.isEmpty(this._valueOption))
-            this.initializeValueOption();
-        
-        return this._valueOption;
-    }
+        protected get Option():any{
+            let callback: any;
+            
+            if(typeof this.options == 'function')
+                callback =   this.FunctionOption;
+            if(Array.isArray(this.options))
+                callback =   this.ArrayOption;
+            
+            return callback;
+        }
 
-    protected get Option():any{
-        let callback: any;
-        
-        if(typeof this.options == 'function')
-            callback =   this.FunctionOption;
-        if(Array.isArray(this.options))
-            callback =   this.ArrayOption;
-        
-        return callback;
-    }
-
-    protected abstract get FunctionOption():any;
-
-    protected abstract get ArrayOption():any;
-
-    /*******************************************/
+    /******************Constructor*************************/
     
-    constructor() {}
+        constructor() {}
 
-    /*******************************************/
+    /***************** Methods**************************/
 
-    private initializeValueOption(){
-        let type = !this.multiSelect ? SingleValueOptions: MultiValueOptions;
+        private initializeValueOption(){
+            let type = !this.multiSelect ? SingleValueOptions: MultiValueOptions;
 
-        this._valueOption = ValueOption.createInstance(type);
-        this._valueOption.ValueChange.subscribe((value)=>this.valueChange.emit(value));
-    }
-    
-    protected abstract checkValue(value:any):any;
+            this._valueOption = ValueOption.createInstance(type);
+            this._valueOption.ValueChange.subscribe((value)=>this.valueChange.emit(value));
+        }
+        
+        private validateInputValue(value:any):any{
+            if(Array.isArray(value))
+                _.remove(value,(item)=>_.findIndex(this.Option(item),(option)=> _.isEqual(option,item)) == -1);
 
-    protected clearValue():void{
-        this.ValueOption.clearValue();
-    }
+            return  !_.isEmpty(value)  
+                && ( (this.multiSelect && Array.isArray(value)) || (!this.multiSelect && _.findIndex(this.Option(value),(item)=> _.isEqual(value,item)) != -1) );
+        }
 
-    protected transformOption(option: any): any{
-        option = _.isEmpty(option) ? "": option;
-        return (_.isEmpty(this.optionField) || _.isEmpty(option[this.optionField])) ? option:  option[this.optionField];
-    }  
+        protected clearValue():void{
+            this.ValueOption.clearValue();
+        }
 
-    protected isValeu(value:any):boolean{
-        return this._valueOption.isValue(value);
-    }
+        protected transformOption(option: any): any{
+            option = _.isEmpty(option) ? "": option;
+            return (_.isEmpty(this.optionField) || _.isEmpty(option[this.optionField])) ? option:  option[this.optionField];
+        }  
+
+        protected isValeu(value:any):boolean{
+            return this._valueOption.isValue(value);
+        }
   
 }
