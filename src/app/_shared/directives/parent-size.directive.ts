@@ -1,42 +1,41 @@
 import { Directive,OnInit,Input,ElementRef } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
+import * as _ from "lodash";
 
 @Directive({
   selector: '[parentSize]'
 })
 export class ParentSizeDirective implements OnInit {
-  @Input() direction: 'width' = 'width';
-  @Input() disableParentSize: boolean = false;
+  /******************* Inputs & Outputs ************************/
 
-  private parent: HTMLElement;
+    @Input() direction: 'width' = 'width';
+    @Input() disableParentSize: boolean = false;
 
-  /*******************************************/
+  /******************** Fields ***********************/
 
-  private get capitalizeDirection():String{
-    return this.direction.replace(/\b\w/g, l => l.toUpperCase());
-  }
+    private parent: HTMLElement;
+ 
+  /******************Constructor*************************/
 
-  /*******************************************/
+    constructor(private element:ElementRef) { }
 
-  constructor(private element:ElementRef) { }
+    ngOnInit(){
+      this.parent = this.element.nativeElement.parentElement;
+      this.setMaxWidht();
 
-  ngOnInit(){
-    this.parent = this.element.nativeElement.parentElement;
-    this.setMaxWidht();
-
-    Observable.fromEvent(window, 'resize').subscribe((event) => {this.setMaxWidht();});
-  }
+      Observable.fromEvent(window, 'resize').subscribe((event) => {this.setMaxWidht();});
+    }
   
-  /*******************************************/
+   /***************** Methods**************************/
 
-   private setMaxWidht(){
-      if(this.parent){
+    private setMaxWidht(){
+      if(this.parent && !this.disableParentSize){
         let widht = this.element.nativeElement.style[this.direction];
         
         this.element.nativeElement.style[this.direction] = '0px';
-        this.element.nativeElement.style[ 'max'+ this.capitalizeDirection]  = this.parent['client' + this.capitalizeDirection] + "px";
+        this.element.nativeElement.style[ 'max'+ _.capitalize(this.direction)]  = this.parent['client' + _.capitalize(this.direction)] + "px";
         this.element.nativeElement.style[this.direction] = widht;    
+      }
     }
-  }
 
 }
