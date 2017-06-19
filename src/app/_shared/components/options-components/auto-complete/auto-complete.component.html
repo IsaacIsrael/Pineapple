@@ -3,7 +3,7 @@
             <div class="values">
                   
                   <ul class="list-group list-inline selectedOptions" *ngIf="multiSelect" >
-                        <li class="list-group-item" *ngFor="let item of value" >
+                        <li class="list-group-item" *ngFor="let item of Value" >
                               <span class="badge">
                                     {{transformOption(item)}}
                                     <button type="button" class="btn btn-default btn-xs" (click)="onRemoveEventHandler($event,item)">
@@ -28,12 +28,13 @@
             </div>
       </div>
  </div>
-
-<div class="options-container" [hidden]="IsHideOptions">
-      <ul class="list-group options">
-            <li class="list-group-item"  [class.selected]="isSelected(item)" (mousedown)="onSelectOptionEventHandler($event,item)" 
-                  *ngFor="let item of list ">{{transformOption(item)}}</li>
-      </ul>
+<div class="popover-container" [hidden]="IsHideOptions"> 
+       <div class="popover">
+            <ul class="popover-content list-group">
+                  <li class="list-group-item"  [class.selected]="isSelected(item)" (mousedown)="onSelectOptionEventHandler($event,item)" 
+                        *ngFor="let item of list ">{{transformOption(item)}}</li>
+            </ul>
+      </div>
 </div>
 
 
