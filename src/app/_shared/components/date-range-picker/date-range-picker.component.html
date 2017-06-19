@@ -1,10 +1,10 @@
 <div class="input-group" [class.disabled]="disabled" >
   
-  <div class="input-group input-container left " [class.focus]="isFocus && range == 'start'" (click)="start.focus()">
+  <div class="input-group input-container left " [class.focus]="IsFocus && range == 'start'" (click)="start.focus()">
     <input #start type="date" class="form-control" [disabled]="disabled"  [value]="Value.Start | dateFormat:'YYYY-MM-DD'"
      (focus)="onFocusEventHandler($event,'start')" (input)="onInputEventHandler($event,'start')" >
     <div class="input-group-addon">
-        <button type="button" class="btn btn-default"  [disabled]="disabled" [class.hiden]="!isFocus" (click)="onClearDateEventHandler($event,'start')">
+        <button type="button" class="btn btn-default"  [disabled]="disabled" [class.hiden]="!IsFocus" (click)="onClearDateEventHandler($event,'start')">
               <i class="material-icons">clear</i>
         </button>
         <i class="material-icons">date_range</i>
@@ -13,11 +13,11 @@
   
   <div class="input-group-addon">|</div>
 
-  <div class="input-group input-container right " [class.focus]="isFocus && range == 'end'" (click)="end.focus()" >
+  <div class="input-group input-container right " [class.focus]="IsFocus && range == 'end'" (click)="end.focus()" >
     <input #end type="date" class="form-control" [disabled]="disabled" [value]="Value.End | dateFormat:'YYYY-MM-DD'" 
       (focus)="onFocusEventHandler($event,'end')" (input)="onInputEventHandler($event,'end')" >
     <div class="input-group-addon">
-        <button type="button" class="btn btn-default" [disabled]="disabled" [class.hiden]="!isFocus" (click)="onClearDateEventHandler($event,'end')">
+        <button type="button" class="btn btn-default" [disabled]="disabled" [class.hiden]="!IsFocus" (click)="onClearDateEventHandler($event,'end')">
               <i class="material-icons">clear</i>
         </button>
         <i class="material-icons icons">date_range</i>
@@ -27,7 +27,7 @@
 </div>
 
 <div class="popover-container"> 
-  <div class="popover bottom" [@slide]=" isFocus ? 'true' : 'false'">
+  <div class="popover bottom" [@slide]=" IsFocus ? 'true' : 'false'">
     <div class="arrow" [class.end]="range == 'end'"></div>
     <div class="popover-content">
       <div class="content-group">
@@ -38,7 +38,7 @@
           </button>
         </div>
 
-        <div class="calendar" hidenItens>
+        <div class="calendar" hidenItens [dataChange]="calendarChange">
           <div class="month" *ngFor="let month of Calendar" >
             <div class="header">
               <span class="title">{{month?.month | date:'MMMM y'}}</span>

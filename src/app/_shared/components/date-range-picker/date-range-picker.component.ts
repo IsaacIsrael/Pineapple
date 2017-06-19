@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener ,Input,Output, EventEmitter ,ElementRef } from '@angular/core';
+import { Component, HostListener ,Input,Output, EventEmitter ,ElementRef } from '@angular/core';
 import * as _ from "lodash";
 import * as dateFns from 'date-fns';
 
@@ -14,7 +14,7 @@ import { Slide } from '../../animations/slideIn-slideOut.animation'
   styleUrls: ['./date-range-picker.component.css'],
   animations: [ Slide(500,-15) ],
 })
-export class DateRangePickerComponent implements OnInit {
+export class DateRangePickerComponent  {
   /******************* Inputs & Outputs ************************/ 
 
     @Input()untilToday: boolean = false;
@@ -32,11 +32,12 @@ export class DateRangePickerComponent implements OnInit {
   /******************** Fields ***********************/
 
     private range: 'start' | 'end' = 'start';
-    private isFocus:  boolean = false;
+    private _isFocus:  boolean = false;
 
     private _calendar:Array<Month> = new Array<Month>();
     private _calendarRange:DateRange = new DateRange(); 
     private _value:DateRange = new DateRange();
+    private  calendarChange : EventEmitter<any> = new EventEmitter();
 
   /******************* Properties ************************/
 
@@ -55,6 +56,7 @@ export class DateRangePickerComponent implements OnInit {
 
       this._calendarRange = value;
       this._calendar =  Month.forEachMonth(this._calendarRange.Start,this._calendarRange.End);
+      setTimeout(()=>this.calendarChange.emit(),0);
     }
     private get CalendarRange():DateRange{
         return this._calendarRange;
@@ -89,6 +91,18 @@ export class DateRangePickerComponent implements OnInit {
       return this._calendar;
     }
 
+    private set IsFocus(value:boolean){
+      this._isFocus = value;
+      
+      if(this._isFocus)
+         this.CalendarDate = new Date ();
+      else
+        this.CalendarRange = new DateRange();
+    }
+    private get  IsFocus():boolean{
+      return this._isFocus;
+    }
+
   /*******************Host Listeners************************/
 
     @HostListener('document:keyup.Shift.Tab', ['$event'])
@@ -97,17 +111,13 @@ export class DateRangePickerComponent implements OnInit {
     onBlurHostListener(e: Event) {
         let target = e.srcElement || e.target;
 
-        if ( this.isFocus && !this._elementRef.nativeElement.contains(e.target))
-          this.isFocus = false;
+        if ( this.IsFocus && !this._elementRef.nativeElement.contains(e.target))
+          this.IsFocus = false;
     }
 
   /******************Constructor*************************/
 
     constructor(private _elementRef:ElementRef) { }
-
-    ngOnInit() {
-      this.CalendarDate = new Date ();
-    } 
 
   /***************** Methods**************************/
 
@@ -139,7 +149,7 @@ export class DateRangePickerComponent implements OnInit {
 
     private onFocusEventHandler(e:Event,arg:any):void{
       this.range = arg;
-      this.isFocus = true;
+      this.IsFocus = true;
       this.CalendarDate = this.ValueDate;
     }
 

@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
 import * as dateFns from 'date-fns';
 
 @Pipe({
