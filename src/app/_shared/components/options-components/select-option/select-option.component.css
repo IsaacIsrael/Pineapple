@@ -1,174 +1,173 @@
 /********************************** Input **********************************/
+    .input-container {
+        background-color: #ffffff;
+        border: 1px solid rgb(204, 204, 204);
+        border-radius: 5px; 
+        overflow: hidden;
+        cursor:pointer ;
 
-.input-container {
-    background-color: #ffffff;
-    border: 1px solid rgb(204, 204, 204);
-    border-radius: 5px; 
-    overflow: hidden;
-    cursor:pointer ;
+        transition: all .3s ease-in-out; 
+    }
+    .input-container.focus {
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);    border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    }
+    .input-container.disabled{
+        cursor: not-allowed;
+        background-color: #eee;
+    }
+    /**************** Value  ****************/
+    .input-container > .input-group >.value{
+        display: table-cell;
+        vertical-align: middle;
+        text-align: justify;
+        min-height: 34px;
+        padding-left: 5px;
+        color: #060606
+    }
+    .input-container > .input-group >.value.valueEmpty{
+        color: #777;
+    }
+    /**************** Selected Options  ****************/
+    .input-container > .input-group > ul.selectedOptions{
+        margin-bottom: 0px;
+        margin-left: 0px;
+        border: none;
+        background-color: transparent;
+    }
+    .input-container > .input-group > ul.selectedOptions > li{
+        background-color: transparent;
+        border: none;
+        padding: 0px;
+        float: left;
+    }
+    .input-container > .input-group > ul.selectedOptions > li:first-child > span {
+        margin: 5px;
+    }
+    .input-container > .input-group > ul.selectedOptions > li > span.badge{
+        line-height: 15px;
+        padding: 5px;
+        margin: 5px;
+        margin-right:0px; 
+        color: #fff;
+        background-color: #337ab7;
+        border-color: #2e6da4;
+        border-radius: 5px; 
+    }
+    .input-container.disabled > .input-group > ul.selectedOptions > li > span.badge{
+        background-color: #777;
+    }
+    .input-container > .input-group > ul.selectedOptions > li > span.badge > .btn{
+        background-color: transparent;
+        font-size: 10px;
+        padding: 0px;
+        border: none;
+        border: none;
+        box-shadow: none;
+        border-radius: 0px;
+        border-left: 1px solid #999999;
+        margin-left:3px;
+        padding-left: 3px; 
+        color: #ffffff;
+    }
+    .input-container.disabled > .input-group > ul.selectedOptions > li > span.badge > .btn{
+        cursor: not-allowed;
+    }
+    .input-container > .input-group > ul.selectedOptions > li > span.badge > .btn:active,
+    .input-container > .input-group > ul.selectedOptions > li > span.badge > .btn:focus{
+        box-shadow: none;
+        outline-offset: 0px;
+        outline-width:0px;
+    }
+    .input-container > .input-group > ul.selectedOptions > li > span.badge > .btn i{
+        font-weight: bold;
+        font-size: 14px;
 
-    transition: all .3s ease-in-out; 
-}
-.input-container.focus {
-    border-color: #66afe9;
-    outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);    border-color: #66afe9;
-    outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
-}
-.input-container.disabled{
-    cursor: not-allowed;
-    background-color: #eee;
-}
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    /**************** Buttons ****************/
+    .input-container > .input-group > .input-group-addon{
+        background-color: transparent;
+        border: none;
+        transition: all .3s ease-in-out; 
+    }
+    .input-container > .input-group > .input-group-addon > button.btn{
+        padding: 0px;
+        margin: 0px;
+        border: none;
+        box-shadow: none;
+        outline-offset: 0px;
+        outline-width:0px;
+        background-color: transparent;
+    }
+    .input-container > .input-group > .input-group-addon >  button.btn i{
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 18px;
+        opacity: 1;
 
-/**************** value  ****************/
-.input-container > .input-group >.value{
-    display: table-cell;
-    vertical-align: middle;
-    text-align: justify;
-    min-height: 34px;
-    padding-left: 5px;
-    color: #060606
-}
-.input-container > .input-group >.value.valueEmpty{
-    color: #777;
-}
-/**************** Selected Options  ****************/
-.input-container > .input-group > ul.selectedOptions{
-    margin-bottom: 0px;
-    margin-left: 0px;
-    border: none;
-    background-color: transparent;
-}
-.input-container > .input-group > ul.selectedOptions > li{
-    background-color: transparent;
-    border: none;
-    padding: 0px;
-    float: left;
-}
-
-.input-container > .input-group > ul.selectedOptions > li:first-child > span {
-     margin: 5px;
-}
-.input-container > .input-group > ul.selectedOptions > li > span.badge{
-    line-height: 15px;
-    padding: 5px;
-    margin: 5px;
-    margin-right:0px; 
-    color: #fff;
-    background-color: #337ab7;
-    border-color: #2e6da4;
-    border-radius: 5px; 
-}
-.input-container.disabled > .input-group > ul.selectedOptions > li > span.badge{
-    background-color: #777;
-}
-.input-container > .input-group > ul.selectedOptions > li > span.badge > .btn{
-    background-color: transparent;
-    font-size: 10px;
-    padding: 0px;
-    border: none;
-    border: none;
-    box-shadow: none;
-    border-radius: 0px;
-    border-left: 1px solid #999999;
-    margin-left:3px;
-    padding-left: 3px; 
-    color: #ffffff;
-}
-.input-container.disabled > .input-group > ul.selectedOptions > li > span.badge > .btn{
-    cursor: not-allowed;
-}
-.input-container > .input-group > ul.selectedOptions > li > span.badge > .btn:active,
-.input-container > .input-group > ul.selectedOptions > li > span.badge > .btn:focus{
-    box-shadow: none;
-    outline-offset: 0px;
-    outline-width:0px;
-}
-.input-container > .input-group > ul.selectedOptions > li > span.badge > .btn i{
-    font-weight: bold;
-    font-size: 14px;
-
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-/**************** Buttons ****************/
-.input-container > .input-group > .input-group-addon{
-    background-color: transparent;
-    border: none;
-    transition: all .3s ease-in-out; 
-}
-.input-container > .input-group > .input-group-addon > button.btn{
-    padding: 0px;
-    margin: 0px;
-    border: none;
-    box-shadow: none;
-    outline-offset: 0px;
-    outline-width:0px;
-    background-color: transparent;
-}
-.input-container > .input-group > .input-group-addon >  button.btn i{
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 18px;
-    opacity: 1;
-
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-.input-container.disabled > .input-group > .input-group-addon >  button.btn i{
-    cursor: not-allowed;
-}
-.input-container > .input-group > .input-group-addon >  button.btn.hiden  i{
-    opacity: 0;
-}
-.input-container:hover > .input-group > .input-group-addon >  button.btn.hiden i{
-    opacity: 1;
-}
-.input-container.disabled:hover > .input-group > .input-group-addon >  button.btn.hiden i{
-    opacity: 0;
-}
-
-/********************************** Option List **********************************/
-
-.options-container{
-    position: relative;
-    z-index: 9999;
-    margin: 0px;
-}
-.options-container > .options {
-    position: absolute;
-    width: 100%;
-    padding: 0px;
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,1);
-    background-color: #ffffff;
-
-    max-height: 205px;
-    overflow-y: auto;
-}
-.options-container > .options >  li:first-child {
-   border-radius: 0px;
-}
-.options-container > .options >  li:last-child {
-   border-bottom-width:0px;
-}
-.options-container > .options > li{
-    cursor: pointer;
-    border-width:1px 0px;
-    background-color: transparent;
-}
-.options-container > .options > li.selected,
-.options-container > .options > li:hover{
-    background-color: #007acc;
-    color:#fff;
-}
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .input-container.disabled > .input-group > .input-group-addon >  button.btn i{
+        cursor: not-allowed;
+    }
+    .input-container > .input-group > .input-group-addon >  button.btn.hiden  i{
+        opacity: 0;
+    }
+    .input-container:hover > .input-group > .input-group-addon >  button.btn.hiden i{
+        opacity: 1;
+    }
+    .input-container.disabled:hover > .input-group > .input-group-addon >  button.btn.hiden i{
+        opacity: 0;
+    }
+/********************************** PopOver **********************************/
+    .popover-container{
+        position: relative;
+    }
+    .popover-container > .popover{
+        display: block;
+        max-width: none;
+        width: 100%;
+        padding: 0px;
+        border-top-right-radius: 0px;
+        border-top-left-radius: 0px;
+        overflow: hidden;
+    }
+    .popover-container >  .popover > .popover-content{
+        overflow: hidden;
+        margin: 0px;
+        padding: 0px;
+        border: none;
+    } 
+    /**************** List Group  ****************/ 
+     .popover-container >  .popover > .list-group{
+        max-height: 210px;
+        overflow-y: auto;
+     }
+     .popover-container >  .popover > .list-group > .list-group-item{
+        border-right: none;
+        border-left: none;
+        cursor: pointer;
+    }
+    .popover-container >  .popover > .list-group > .list-group-item:first-child{
+        border-top-right-radius: 0px;
+        border-top-left-radius: 0px;
+    }
+    .popover-container >  .popover > .list-group > .list-group-item.selected,
+    .popover-container >  .popover > .list-group > .list-group-item:hover{
+        background-color: #0070ba;
+        color:#fff;
+    }
