@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { OptionsComponentsTestComponent } from './options-components.test.component';
+import { PopoverComponentTest } from './popover.test.component';
 
-describe('OptionsComponentsTesteComponent', () => {
-  let component: OptionsComponentsTestComponent;
-  let fixture: ComponentFixture<OptionsComponentsTestComponent>;
+describe('PopoverComponent', () => {
+  let component: PopoverComponentTest;
+  let fixture: ComponentFixture<PopoverComponentTest>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OptionsComponentsTestComponent ]
+      declarations: [ PopoverComponentTest ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OptionsComponentsTestComponent);
+    fixture = TestBed.createComponent(PopoverComponentTest);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

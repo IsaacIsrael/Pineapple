@@ -9,12 +9,13 @@ import { AutoCompleteComponent } from './components/options-components/auto-comp
 import { SelectOptionComponent } from './components/options-components/select-option/select-option.component';
 import { DateRangePickerComponent } from './components/date-range-picker/date-range-picker.component';
 
+import { GroupByPipe } from './pipes/group-by.pipe';
+import { DateFormatPipe } from './pipes/date-format.pipe';
+
+import { AddAnimationDirective } from './directives/add-animation.directive';
 import { AutoSizeDirective } from './directives/auto-size.directive';
 import { ParentSizeDirective } from './directives/parent-size.directive';
 import { HidenItensDirective } from './directives/hiden-itens.directive';
-
-import { GroupByPipe } from './pipes/group-by.pipe';
-import { DateFormatPipe } from './pipes/date-format.pipe';
 
 @NgModule({
     imports: [
@@ -48,6 +49,7 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
         AutoSizeDirective,
         ParentSizeDirective,
         HidenItensDirective,
+        AddAnimationDirective,
     ],
     providers: [],
 })

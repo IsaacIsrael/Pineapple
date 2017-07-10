@@ -8,6 +8,7 @@ import { ToggletPanelTestComponent } from './test/togglet-panel.test/togglet-pan
 import { AutoCompleteTestComponent } from './test/auto-complete.test/auto-complete.test.component';
 import { SelectOptionsTestComponent } from './test/select-options.test/select-options.test.component';
 import { DateRangePickerTestComponent } from './test/date-range-picker.test/date-range-picker.test.component';
+ import { PopoverComponentTest } from './test/popover.test/popover.test.component';
 import { SearchBoxTestComponent } from './test/search-box.test/search-box.test.component';
 import { TestComponent } from './test/test.component';
 
@@ -15,11 +16,11 @@ import { SupplierRunningDateService } from './running-date/supplier.running-date
 import { UserRunningDateService } from './running-date/user.running-date.service';
 
 
+
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-       
         SharedModule, 
     ],
     exports: [TestComponent],
@@ -30,6 +31,7 @@ import { UserRunningDateService } from './running-date/user.running-date.service
         SelectOptionsTestComponent,
         AutoCompleteTestComponent,
         SearchBoxTestComponent,
+        PopoverComponentTest,
     ],
     providers: [
         SupplierRunningDateService,
