@@ -1,15 +1,17 @@
-<div class="panel panel-default">
+<div class="panel panel-default"> 
   
   <div class="panel-heading">
-    <ng-content select=".panel-title"></ng-content>
-    <div class="buttons"> 
+    <div class="panel-title-container">
+      <ng-content select=".panel-title"></ng-content>
+    </div>
+    <div class="button-container"> 
         <button type="button" class="btn btn-default icon" [ngClass]="{'in':state}" (click)="onClickEventHandler($event)" >
            <i class="material-icons icon">keyboard_arrow_down</i>
         </button>
     </div>
   </div>
 
-  <div class="body-container" [@slide]=" state ? 'true' : 'false'">
+  <div class="body-container" addAnimation [animation]="Animation" [status]="Status">
     <ng-content select=".panel-body" ></ng-content>
   </div>
 

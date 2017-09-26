@@ -1,18 +1,31 @@
 import { Component, Input, HostListener, ElementRef } from '@angular/core';
-import * as _ from "lodash";
+  import * as _ from "lodash";
 
-import { Slide } from '../../animations/slideIn-slideOut.animation'
+import { Collapse } from '../../animations/expander-collapse.animation'
 
 @Component({
   selector: 'togglet-panel',
   templateUrl: './togglet-panel.component.html',
   styleUrls: ['./togglet-panel.component.css'],
-   animations: [ Slide(600,) ],
+   animations: [ Collapse() ],
 })
 export class ToggletPanelComponent {
-  @Input() isOpenOnlyFocus : boolean = false;
+  /*******************************************/
 
+  @Input() isOpenOnlyFocus : boolean = false;
+  
+  /*******************************************/
   private state: boolean = false;
+
+  /*******************************************/
+
+  private get Animation():any{
+    return Collapse();
+  }
+
+  private get Status():boolean{
+    return this.state;
+  }
 
   /*******************************************/
 
@@ -22,7 +35,13 @@ export class ToggletPanelComponent {
       this.state = false;
   }
 
-  constructor(private elementRef:ElementRef) { }
+  /*******************************************/
+
+  constructor(private elementRef:ElementRef) { 
+    // console.log(Collapse());
+  }
+
+  
 
   /*******************************************/
 
